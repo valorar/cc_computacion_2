@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 15 de CC2: tipos de errores, tracebacks y depuradores, casos de prueba, calidad del código y planificación de tareas.">
+  <title>Tema 15: Depurar, probar y mejorar</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_15.html" aria-current="page">Tema 15</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_3">3.ª evaluación</a></li><li aria-current="page">Tema 15</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 15 · Bloque D · 3.ª evaluación</p>
+          <h1>Depurar, probar y mejorar</h1>
+          <p class="hero_intro">Que un programa funcione no es un misterio: es leer errores con método, probar con casos pensados y mejorar el código por partes pequeñas.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>5–6 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>clasificar un error como de sintaxis, ejecución o lógica y localizarlo en el traceback;</li>
+            <li>usar trazas y un depurador paso a paso para observar qué ocurre dentro del programa;</li>
+            <li>escribir casos de prueba que cubren lo normal, los límites y los datos inválidos;</li>
+            <li>planificar la secuencia de tareas y mejorar el código con pequeños cambios probados.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#errores">1. ERRORES</a></li>
+            <li><a href="#rastro">2. RASTRO</a></li>
+            <li><a href="#pruebas">3. PRUEBAS</a></li>
+            <li><a href="#calidad">4. CALIDAD</a></li>
+            <li><a href="#tareas">5. PLAN</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Un programa tuyo da un resultado equivocado sin ningún mensaje de error. ¿Por dónde empiezas: por el código, por los datos de entrada o por lo que esperabas que hiciera?
+          </div>
+
+          <section id="errores">
+            <span class="etiqueta">01 / ERRORES</span>
+            <h2>Tres familias de errores</h2>
+            <p>El <strong>error de sintaxis</strong> incumple las reglas del lenguaje (dos puntos olvidados, comillas sin cerrar) y Python se niega a ejecutar. El <strong>error de ejecución</strong> aparece al correr con una entrada concreta: dividir entre cero, una lista vacía, un archivo que no existe. El <strong>error de lógica</strong> es el traicionero: el programa corre sin quejarse y devuelve algo incorrecto.</p>
+            <pre><code>def suma_hasta(n):
+    """Suma 1 + 2 + ... + n."""
+    total = 0
+    for i in range(1, n):      # error lógico: el propio n queda fuera
+        total += i
+    return total
+
+# Pruebas: suma_hasta(3)->3 (esperado 6) · suma_hasta(5)->10 (esperado 15)
+# Sin excepciones: el fallo solo se ve al comparar con lo esperado.</code></pre>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>La sintaxis la detecta Python al leer, la ejecución al correr y la lógica solo al comparar el resultado con lo esperado: por eso necesitas casos de prueba.</aside>
+          </section>
+
+          <section id="rastro">
+            <span class="etiqueta">02 / RASTRO</span>
+            <h2>Leer el rastro: tracebacks y depurador</h2>
+            <p>Ante un error de ejecución, Python imprime un <em>traceback</em>. La última línea dice el tipo de error y su mensaje; las superiores, el camino de llamadas que llevó hasta él.</p>
+            <pre>Traceback (most recent call last):
+  File "carrito.py", line 12, in &lt;module&gt;
+    total += articulos[2]
+IndexError: list index out of range</pre>
+            <p>Tres datos: archivo (<code>carrito.py</code>), línea (12) y tipo con mensaje (<code>IndexError</code>: pediste la posición 2 y la lista no llega). Para la lógica no hay traceback, y ahí entran las herramientas de observación: <code>print()</code> provisionales para ver valores intermedios (luego los retiras) y, mejor, el <strong>depurador</strong> de IDLE, Thonny o Visual Studio Code: punto de interrupción, paso a paso e inspección de variables.</p>
+          </section>
+
+          <section id="pruebas">
+            <span class="etiqueta">03 / PRUEBAS</span>
+            <h2>Casos de prueba que se ejecutan solos</h2>
+            <p>Probar «a ojo» no sirve: al cambiar el código tendrás que acordarte de todo. Un caso de prueba declara una entrada y su salida esperada, y una buena batería cubre tres categorías: caso normal, límites (vacío, cero, primero, último) y datos inválidos.</p>
+            <pre><code>def ahorro(mensual, meses):
+    """Dinero ahorrado; None si los datos no tienen sentido."""
+    if mensual &lt;= 0 or meses &lt;= 0:
+        return None
+    return mensual * meses
+
+# Batería: caso normal, límites y error
+assert ahorro(50, 12) == 600       # caso normal
+assert ahorro(1, 1) == 1           # mínimo válido
+assert ahorro(50, 0) is None       # límite no válido
+assert ahorro(0, 12) is None       # cero sin sentido
+assert ahorro(-5, 3) is None       # fuera de dominio</code></pre>
+            <p>Un <code>assert</code> que falla detiene el programa con <code>AssertionError</code>: eso quieres en desarrollo, un aviso inmediato. Tras cada cambio reejecutas la batería entera, y si algo se rompe lo sabes al segundo. Herramientas como <code>doctest</code> y <code>unittest</code> aparecen en las prácticas.</p>
+          </section>
+
+          <section id="calidad">
+            <span class="etiqueta">04 / CALIDAD</span>
+            <h2>Código que se lee y se mantiene</h2>
+            <p>Se programa una vez y se lee muchas; quien más lee tu código eres tú, semanas después. Un código claro se depura solo. La diferencia no es cosmética:</p>
+            <div class="comparacion">
+              <div><h3>Confuso</h3><pre><code>def f(n):
+    r = []
+    for i in n:
+        if i not in r:
+            r.append(i)
+    return r</code></pre></div>
+              <div><h3>Claro</h3><pre><code>def sin_duplicados(elementos):
+    """Devuelve la lista sin repetidos, conservando el orden."""
+    resultado = []
+    for elemento in elementos:
+        if elemento not in resultado:
+            resultado.append(elemento)
+    return resultado
+
+# Pruebas: [1, 2, 1, 3, 2]-&gt;[1, 2, 3] · []-&gt;[] · [7]-&gt;[7]</code></pre></div>
+            </div>
+            <p>Nombres que dicen qué hace la función, un docstring con propósito y casos, funciones largas divididas en pasos con nombre, código muerto retirado: hábitos baratos que convierten «adivinar qué quería decir» en «leer y entender». Un conjunto eliminaría duplicados, pero aquí el orden importa y por eso el bucle es la herramienta adecuada.</p>
+          </section>
+
+          <section id="tareas">
+            <span class="etiqueta">05 / PLAN</span>
+            <h2>Planificar antes de teclear</h2>
+            <p>Programar sin plan convierte cada tarea en una maraña. El método de las <strong>tareas en secuencia</strong>: divide el problema en pasos pequeños (entrada, cálculo, salida), ordénalos por dependencias —no muestras resultados antes de calcularlos— y programa uno cada vez, probándolo antes de seguir. Ante cada paso: ¿qué recibe?, ¿qué devuelve?, ¿qué puede fallar?</p>
+            <ol>
+              <li>Divide: escribe los pasos que resolverían el problema a mano.</li>
+              <li>Ordena según dependencias, del más simple al más complejo.</li>
+              <li>Programa un paso, pruébalo con sus casos y solo entonces sigue.</li>
+              <li>Mejora por cambios pequeños y reejecuta la batería tras cada uno.</li>
+            </ol>
+            <p>Ese ciclo —cambio pequeño, prueba, observar, adaptar— mantiene vivo el software cuando cambian los requisitos: no es fracaso, es versión nueva. Guardar versiones con git permite retroceder sin miedo cuando un cambio no funciona.</p>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">06 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>Errores de sintaxis, ejecución y lógica: los dos primeros los delata Python, el último solo tus pruebas.</li>
+              <li>El traceback se lee por tipo y mensaje finales y localiza archivo y línea; el depurador observa variables paso a paso.</li>
+              <li>Un caso de prueba declara entrada y salida esperada; una buena batería cubre lo normal, los límites y lo inválido.</li>
+              <li>Un assert que falla detiene el programa: úsalo en desarrollo y reejecuta la batería tras cada cambio.</li>
+              <li>Nombres claros, docstrings y pasos pequeños hacen el código legible; planifica antes de teclear.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E3_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E3_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E3_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E3_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E3_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E3_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E3_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E3_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E3_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E3_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E3_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E3_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E3_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E3_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E3_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E3_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E3_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E3_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E3_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E3_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">07 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://docs.python.org/es/3/tutorial/errors.html">Documentación oficial de Python: errores y excepciones</a>.</li>
+              <li><a href="https://peps.python.org/pep-0008/">PEP 8</a>: guía oficial de estilo para código Python.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 15 · Depurar, probar y mejorar</strong><br><small>Bloque D · 3.ª evaluación</small></p>
+      <p><a href="tema_14.html">← Anterior: tema 14</a> · <a href="tema_16.html">Siguiente: tema 16 →</a><br><small><a href="../../programa.html#evaluacion_3">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

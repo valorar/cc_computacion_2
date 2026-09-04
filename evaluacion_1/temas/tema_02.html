@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 2 de Ciencias de la Computación II: señales, medios de transmisión, conectores y espacios físicos de la red local.">
+  <title>Tema 2: Medios, conectores y señales</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_02.html" aria-current="page">Tema 2</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_1">1.ª evaluación</a></li><li aria-current="page">Tema 2</li></ol>
+    </nav>
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 2 · Bloque A · Primera evaluación</p>
+          <h1>Medios, conectores y señales</h1>
+          <p class="hero_intro">Entre dos ordenadores no viajan archivos: viajan señales. Elegir medio es decidir cómo de lejos, rápido y fiable viajará cada bit.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>6–7 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>distinguir señal analógica y digital;</li>
+            <li>elegir el medio guiado según distancia y velocidad;</li>
+            <li>identificar conectores, tarjetas y categorías de cable;</li>
+            <li>describir los espacios físicos del cableado estructurado.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#senal">1. La señal</a></li>
+            <li><a href="#guiados">2. Medios guiados</a></li>
+            <li><a href="#noguiados">3. Medios no guiados</a></li>
+            <li><a href="#conectores">4. Conectores y tarjetas</a></li>
+            <li><a href="#espacios">5. Los espacios de la red</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            ¿Por qué el cable que llega a tu casa no es el mismo que une dos plantas de un hospital?
+          </div>
+          <section id="senal">
+            <span class="etiqueta">01 / LA SEÑAL</span>
+            <h2>La señal: analógica y digital</h2>
+            <p>Toda comunicación se reduce a transportar una <strong>señal</strong> del emisor al receptor por un medio. La señal <strong>analógica</strong> varía de forma continua (como la voz en el teléfono antiguo); la <strong>digital</strong> alterna entre niveles discretos que representan unos y ceros.</p>
+            <div class="comparacion">
+              <div><h3>Analógica</h3><p>Amplificar también amplifica el ruido acumulado: se degrada con la distancia.</p></div>
+              <div><h3>Digital</h3><p>Un repetidor la <strong>regenera</strong> desde cero, sin arrastrar el ruido anterior.</p></div>
+            </div>
+            <p>En cualquier medio real la señal sufre <strong>atenuación</strong> (pierde fuerza con la distancia) y <strong>ruido</strong> (perturbaciones electromagnéticas). El medio elegido condiciona cuánto resiste la señal antes de necesitar un repetidor.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>Digital no significa «sin problemas»: basta distinguir unos y ceros para regenerar la señal en cada salto.</aside>
+          </section>
+          <section id="guiados">
+            <span class="etiqueta">02 / GUIADOS</span>
+            <h2>Medios guiados: el cable como camino</h2>
+            <p>Los medios <strong>guiados</strong> confinan la señal en un conductor físico:</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th>Medio</th><th>Características</th><th>Mejor para</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Par trenzado</strong></td><td>Cobre trenzado contra interferencias; hasta 10 Gbit/s en 100 m (Cat 6).</td><td>Redes de edificio: el cable RJ-45 de siempre.</td></tr>
+                  <tr><td><strong>Coaxial</strong></td><td>Conductor blindado, resistente y de banda ancha.</td><td>Distribución de TV y acceso de operadores.</td></tr>
+                  <tr><td><strong>Fibra óptica</strong></td><td>Pulsos de luz por vidrio: Gbit/s durante kilómetros, inmune a interferencias.</td><td>Troncales y enlaces donde el cobre no llega.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>En la fibra, la <strong>multimodo</strong> cubre distancias de campus y la <strong>monomodo</strong>, de núcleo más fino, llega mucho más lejos. El vidrio no conduce electricidad: es segura e inmune a las interferencias del cobre.</p>
+          </section>
+          <section id="noguiados">
+            <span class="etiqueta">03 / NO GUIADOS</span>
+            <h2>Medios no guiados: el aire como camino</h2>
+            <p>Los medios <strong>no guiados</strong> propagan ondas por el aire y comparten el <strong>espectro radioeléctrico</strong>, un recurso limitado que se reparte en bandas con y sin licencia:</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th>Tecnología</th><th>Alcance típico</th><th>Uso</th></tr></thead>
+                <tbody>
+                  <tr><td>Wi-Fi (802.11)</td><td>Decenas de metros.</td><td>Redes locales inalámbricas.</td></tr>
+                  <tr><td>Bluetooth (802.15)</td><td>Pocos metros.</td><td>Periféricos personales.</td></tr>
+                  <tr><td>Microondas</td><td>Enlace punto a punto con visión directa.</td><td>Unir dos edificios sin cable.</td></tr>
+                  <tr><td>Satélite</td><td>Cobertura global.</td><td>Donde no hay otra red.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Obstáculos, lluvia y otras emisiones degradan estas señales; el infrarrojo, que exige línea de visión, quedó para mandos y enlaces muy cortos.</p>
+          </section>
+          <section id="conectores">
+            <span class="etiqueta">04 / CONECTORES</span>
+            <h2>Conectores, puertos y tarjetas de red</h2>
+            <p>El medio termina en un <strong>conector</strong> y este entra en un <strong>puerto</strong> de la tarjeta de red. El <strong>RJ-45</strong> (ocho contactos) remata el par trenzado; el <strong>RJ-11</strong>, más pequeño, sirve para telefonía; y la fibra usa <strong>LC</strong> o <strong>SC</strong>, que alinean el vidrio con precisión.</p>
+            <p>La <strong>tarjeta de red</strong> (NIC) va integrada en la placa o como adaptador USB y trae una dirección <strong>MAC</strong> única, su «matrícula» local. Los cables se clasifican por categorías: <strong>Cat 5e</strong> soporta Gigabit en 100 m y <strong>Cat 6</strong> llega a 10 Gbit/s.</p>
+          </section>
+          <section id="espacios">
+            <span class="etiqueta">05 / ESPACIOS</span>
+            <h2>Los espacios físicos de una red local</h2>
+            <p>Una red local ocupa lugares reales: el <strong>cuarto de comunicaciones</strong> (rack, conmutadores y enrutador), el <strong>cableado vertical</strong> que une plantas, el <strong>horizontal</strong> que va del cuarto a cada puesto, las <strong>rosetas</strong> de pared, los <strong>latiguillos</strong> que conectan el equipo y las canaletas o falsos techos que protegen el cable.</p>
+            <p>Ese esquema es el <strong>cableado estructurado</strong>, regido por normas como TIA/EIA-568 que fijan tipos de cable y longitudes: se cablea el edificio una sola vez, con orden, para que cualquier puesto funcione con solo conectar su latiguillo durante décadas.</p>
+            <p>El Wi-Fi no elimina ese cableado: los <strong>puntos de acceso</strong> se cuelgan de él, así que los espacios físicos siguen siendo la base de las redes sin cables.</p>
+          </section>
+          <section id="resumen">
+            <span class="etiqueta">06 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>La señal digital se regenera en cada salto; la analógica acumula ruido.</li>
+              <li>Par trenzado, coaxial y fibra cubren del puesto de trabajo a las grandes distancias.</li>
+              <li>El aire es un medio compartido y regulado: Wi-Fi, Bluetooth y microondas conviven en el espectro.</li>
+              <li>Cada medio tiene su conector: RJ-45 para par trenzado, LC/SC para fibra.</li>
+              <li>La tarjeta de red identifica al equipo con su dirección MAC.</li>
+              <li>El cableado estructurado organiza los espacios físicos para durar décadas.</li>
+            </ol>
+          </section>
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E1_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E1_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E1_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E1_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E1_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E1_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E1_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E1_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E1_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E1_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E1_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E1_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E1_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E1_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E1_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E1_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E1_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E1_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E1_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E1_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">07 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle, con casos y diagnósticos: elegir un medio, identificar un conector o explicar una interferencia.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://www.itu.int/rec/T-REC-G.652">UIT-T G.652</a>. Fibra monomodo.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 2 · Medios, conectores y señales</strong><br><small>Bloque A · Primera evaluación</small></p>
+      <p><a href="tema_01.html">← Anterior: tema 1</a> · <a href="tema_03.html">Siguiente: tema 3 →</a><br><small><a href="../../programa.html#evaluacion_1">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

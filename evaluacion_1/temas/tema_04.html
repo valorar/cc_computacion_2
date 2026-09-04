@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 4 de Ciencias de la Computación II: modelo TCP/IP, direcciones IPv4 e IPv6, enrutado, DNS y estándares IEEE 802.">
+  <title>Tema 4: TCP/IP, direcciones y enrutado</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_04.html" aria-current="page">Tema 4</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_1">1.ª evaluación</a></li><li aria-current="page">Tema 4</li></ol>
+    </nav>
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 4 · Bloque A · Primera evaluación</p>
+          <h1>TCP/IP, direcciones y enrutado</h1>
+          <p class="hero_intro">Internet no guarda un mapa de todo: cada paquete lleva una dirección, y cada enrutador solo decide el siguiente salto.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>7–8 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>relacionar el modelo TCP/IP con OSI;</li>
+            <li>interpretar direcciones, máscaras y puerta de enlace;</li>
+            <li>explicar por qué existe IPv6;</li>
+            <li>describir el enrutado, el DNS y los estándares 802.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#modelo_tcp_ip">1. El modelo TCP/IP</a></li>
+            <li><a href="#ipv4">2. Direcciones IPv4</a></li>
+            <li><a href="#ipv6">3. Direcciones IPv6</a></li>
+            <li><a href="#enrutado">4. Puerta de enlace y enrutado</a></li>
+            <li><a href="#dns">5. DNS: nombres y direcciones</a></li>
+            <li><a href="#estandares">6. Estándares IEEE 802</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Si las direcciones IPv4 se agotaron y los cables no se mueven, ¿cómo puede seguir creciendo Internet?
+          </div>
+          <section id="modelo_tcp_ip">
+            <span class="etiqueta">01 / EL MODELO</span>
+            <h2>El modelo TCP/IP y su relación con OSI</h2>
+            <p>OSI es el plano teórico de referencia; la familia que hace funcionar Internet de verdad es <strong>TCP/IP</strong>, que condensa el trabajo en cuatro capas:</p>
+            <pre><code>Aplicación    →  7 + 6 + 5   (HTTP, DNS, SMTP…)
+Transporte    →  4           (TCP fiable, UDP rápido)
+Internet      →  3           (direccionamiento IP, enrutado)
+Acceso a red  →  2 + 1       (Ethernet, Wi-Fi)</code></pre>
+            <p>IP envía paquetes entre equipos y TCP los entrega completos y en orden; «TCP/IP» nombra a toda esa familia de protocolos.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>OSI organiza la teoría; TCP/IP es la familia de protocolos que Internet usa de verdad.</aside>
+          </section>
+          <section id="ipv4">
+            <span class="etiqueta">02 / IPv4</span>
+            <h2>Direcciones IPv4 y máscaras</h2>
+            <p>Una dirección <strong>IPv4</strong> ocupa 32 bits y se escribe en cuatro octetos decimales (0–255), como <code>192.168.1.137</code>. Parte de los bits identifican la <strong>red</strong> y el resto, el <strong>host</strong>; la frontera la marca la <strong>máscara</strong>. Con <code>255.255.255.0</code> (abreviada <code>/24</code>), los tres primeros octetos son la red y el último, el equipo.</p>
+            <pre><code>Dirección:  192.168.1.137
+Máscara:    255.255.255.0  ( /24 )
+Red:        192.168.1.0    (hosts .1–.254)
+Broadcast:  192.168.1.255</code></pre>
+            <p>Existen rangos <strong>privados</strong> para las LAN (<code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>): no se enrutan por Internet. El <strong>NAT</strong> del enrutador los traduce a una dirección pública al salir, y <code>127.0.0.1</code> es el propio equipo.</p>
+          </section>
+          <section id="ipv6">
+            <span class="etiqueta">03 / IPv6</span>
+            <h2>Direcciones IPv6: el espacio que no se agota</h2>
+            <p>IPv4 ofrece unos 4.300 millones de direcciones, insuficientes para un mundo lleno de dispositivos. <strong>IPv6</strong> usa 128 bits (unas <strong>3,4 × 10³⁸</strong> direcciones) y se escribe en ocho grupos hexadecimales como <code>2001:db8::1</code>, donde <code>::</code> abrevia los grupos de ceros.</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th></th><th>IPv4</th><th>IPv6</th></tr></thead>
+                <tbody>
+                  <tr><td>Notación</td><td>4 octetos decimales.</td><td>8 grupos hexadecimales.</td></tr>
+                  <tr><td>En casa</td><td>Una pública compartida con NAT.</td><td>Direcciones públicas de sobra.</td></tr>
+                  <tr><td>Estado</td><td>Agotado en 2011.</td><td>En despliegue progresivo.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Con IPv6 sobra direccionamiento público y el NAT deja de ser necesario. Hoy conviven ambos con <strong>doble pila</strong> (dual stack): IPv4 e IPv6 a la vez.</p>
+          </section>
+          <section id="enrutado">
+            <span class="etiqueta">04 / ENRUTADO</span>
+            <h2>Puerta de enlace y enrutado</h2>
+            <p>Para salir de tu red local, el equipo entrega el paquete a la <strong>puerta de enlace</strong> (gateway): la IP del enrutador vecino, normalmente la primera del rango. Ese enrutador consulta su <strong>tabla de rutas</strong> y reenvía al siguiente salto, y así hasta el destino:</p>
+            <pre><code>Destino          Siguiente salto
+192.168.1.0/24   Directa (mi LAN)
+0.0.0.0/0        192.168.1.1  (por defecto)</code></pre>
+            <p>Cada paquete lleva un contador <strong>TTL</strong> que decrece en cada salto: si se agota, se descarta, y ningún paquete perdido da vueltas para siempre.</p>
+          </section>
+          <section id="dns">
+            <span class="etiqueta">05 / DNS</span>
+            <h2>DNS: traducir nombres en direcciones</h2>
+            <p>El <strong>DNS</strong> (Domain Name System) traduce nombres en direcciones IP: es la agenda telefónica de Internet. Es un sistema distribuido y jerárquico: dominios de nivel superior (<code>.es</code>, <code>.com</code>…), dominios y subdominios como <code>www.ejemplo.es</code>.</p>
+            <p>Cuando pides una web, tu equipo pregunta a un <strong>resolutor</strong>, que consulta la jerarquía y guarda la respuesta en <strong>caché</strong>.</p>
+          </section>
+          <section id="estandares">
+            <span class="etiqueta">06 / ESTÁNDARES</span>
+            <h2>Estándares IEEE 802</h2>
+            <p>Las redes locales se estandarizan en la familia <strong>IEEE 802</strong>; cada subgrupo publica normas para una tecnología:</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th>Norma</th><th>Tecnología</th><th>Detalle</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>802.3</strong></td><td>Ethernet (cable)</td><td>De 10 Mbit/s a 100 Gbit/s, hoy en dúplex total.</td></tr>
+                  <tr><td><strong>802.11</strong></td><td>Wi-Fi</td><td>Familias a/b/g/n/ac/ax en 2,4, 5 y 6 GHz.</td></tr>
+                  <tr><td><strong>802.15</strong></td><td>Redes personales</td><td>Bluetooth, Zigbee y similares.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>El grupo <strong>802.1</strong> regula el puenteo y las VLAN; 802.3 y 802.11 ocupan la capa de acceso a red de TCP/IP.</p>
+          </section>
+          <section id="resumen">
+            <span class="etiqueta">07 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>TCP/IP condensa OSI en cuatro capas: aplicación, transporte, internet y acceso a red.</li>
+              <li>La máscara separa en cada dirección IPv4 la parte de red y la de host.</li>
+              <li>Los rangos privados salen a Internet gracias al NAT del enrutador.</li>
+              <li>IPv6 nació por el agotamiento de IPv4 y elimina la necesidad de NAT.</li>
+              <li>La puerta de enlace y las tablas de rutas guían cada paquete salto a salto.</li>
+              <li>DNS traduce nombres en direcciones; IEEE 802 estandariza Ethernet, Wi-Fi y Bluetooth.</li>
+            </ol>
+          </section>
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E1_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E1_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E1_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E1_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E1_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E1_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E1_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E1_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E1_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E1_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E1_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E1_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E1_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E1_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E1_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E1_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E1_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E1_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E1_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E1_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">08 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle, con casos: calcular redes, elegir ruta o razonar la llegada de IPv6.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://datatracker.ietf.org/doc/html/rfc1180">RFC 1180: A TCP/IP Tutorial</a>. Tutorial oficial.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 4 · TCP/IP, direcciones y enrutado</strong><br><small>Bloque A · Primera evaluación</small></p>
+      <p><a href="tema_03.html">← Anterior: tema 3</a> · <a href="tema_05.html">Siguiente: tema 5 →</a><br><small><a href="../../programa.html#evaluacion_1">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 10 de Ciencias de la Computación II: edición de imagen, retoque, composición por capas, dibujo vectorial y exportación.">
+  <title>Tema 10: Edición de imagen: retocar, componer y crear</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_10.html" aria-current="page">Tema 10</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_2">2.ª evaluación</a></li><li aria-current="page">Tema 10</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 10 · Bloque C · 2.ª evaluación</p>
+          <h1>Edición de imagen: retocar, componer y crear</h1>
+          <p class="hero_intro">Retocar, montar o dibujar un logo: mismas ideas de capas y exportación.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>6–7 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>manejar capas, selecciones y herramientas de retoque;</li>
+            <li>ajustar luz y color sin degradar el original;</li>
+            <li>componer imágenes y crear dibujo vectorial;</li>
+            <li>exportar con el formato y la calidad adecuados.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#herramientas">1. Herramientas y capas</a></li>
+            <li><a href="#retoque">2. Retocar y ajustar</a></li>
+            <li><a href="#componer">3. Componer imágenes</a></li>
+            <li><a href="#vectorial">4. Crear y exportar</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            ¿Cuándo una imagen deja de ser «la foto que hice» y empieza a ser «una imagen que he creado»?
+          </div>
+
+          <section id="herramientas">
+            <span class="etiqueta">01 / HERRAMIENTAS</span>
+            <h2>Editores, capas y selecciones</h2>
+            <p>Para editar píxeles se usan editores rasterizados (<strong>GIMP</strong>, libre; Photoshop, comercial); para dibujo vectorial, <strong>Inkscape</strong> (libre) o Illustrator. En el aula usamos los libres.</p>
+            <div class="comparacion">
+              <div><h3>Editar píxeles</h3><p>GIMP: retoque, montaje y pintura. El resultado es siempre una cuadrícula de píxeles.</p></div>
+              <div><h3>Dibujar vectores</h3><p>Inkscape: logos e infografías escalables, editables trazo a trazo.</p></div>
+            </div>
+            <p>La idea central es la <strong>capa</strong>: cada elemento se edita en su lámina transparente, apilada sobre las demás. Editar por capas es <strong>no destructivo</strong>: puedes mover o desactivar un elemento sin tocar el resto. Las <strong>selecciones</strong> (rectángulo, elipse, lazo, varita) limitan los cambios a una zona.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>Trabaja por capas y sobre una copia del original: lo editado «en plano» no se deshace al guardar.</aside>
+          </section>
+
+          <section id="retoque">
+            <span class="etiqueta">02 / RETOQUE</span>
+            <h2>Retocar y ajustar</h2>
+            <p>El <strong>retoque</strong> mejora una imagen sin cambiar su contenido: corrige luz, color y defectos técnicos. Ajustes habituales:</p>
+            <ul>
+              <li><strong>Encuadre:</strong> recortar y enderezar el horizonte.</li>
+              <li><strong>Luz:</strong> niveles y curvas, guiados por el <em>histograma</em>.</li>
+              <li><strong>Color:</strong> temperatura, saturación y balance.</li>
+              <li><strong>Reparaciones:</strong> tampón de clonar y pincel corrector.</li>
+            </ul>
+            <p>El <em>histograma</em> muestra cuántos píxeles hay en cada nivel de brillo: valores amontonados a la izquierda significan imagen oscura sin detalle en sombras. Ajustar niveles reparte esos valores sin inventar información: <strong>no se crea luz donde no la hay</strong>.</p>
+            <p class="nota">Regla profesional: retocar para que el resultado sea creíble y ético. Alterar un rostro sin consentimiento o falsear una noticia no es edición: es manipulación.</p>
+          </section>
+
+          <section id="componer">
+            <span class="etiqueta">03 / COMPOSICIÓN</span>
+            <h2>Componer imágenes</h2>
+
+            <ol>
+              <li><strong>Extraer:</strong> seleccionar el sujeto y copiarlo a su propia capa.</li>
+              <li><strong>Transformar:</strong> escalar, rotar o deformar cada pieza hasta que encaje.</li>
+              <li><strong>Fundir:</strong> opacidad y modos de fusión para integrar sombras y luces.</li>
+              <li><strong>Unificar:</strong> un ajuste de color para que todo comparta la misma «luz».</li>
+            </ol>
+            <p>Lo que delata un montaje está en los bordes: restos de fondo, sombras falsas o grano distinto. Las <strong>máscaras de capa</strong> ocultan partes sin borrarlas, ideal para bordes suaves de pelo o humo.</p>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>Un montaje se delata por la incoherencia: luz, sombra, grano y perspectiva deben pertenecer a la misma escena.</aside>
+          </section>
+
+          <section id="vectorial">
+            <span class="etiqueta">04 / VECTORIAL</span>
+            <h2>Crear con vectores y exportar</h2>
+            <p>En Inkscape se dibuja con <strong>formas</strong> y con la <strong>pluma</strong>, que crea trayectos de nodos con curvas de Bézier: cada nodo tiene dos mangos que curvan la línea. Relleno, trazo, degradados y <strong>texto</strong> completan el dibujo.</p>
+            <ul>
+              <li>Operaciones booleanas: unir, restar o intersecar formas para siluetas complejas.</li>
+              <li>Agrupar y ordenar: las figuras se apilan como piezas de un puzzle.</li>
+              <li>Texto convertible en trayecto para deformarlo o exportarlo fielmente.</li>
+            </ul>
+
+            <div class="tabla_responsiva" tabindex="0">
+              <table>
+                <thead><tr><th>Destino</th><th>Formato</th></tr></thead>
+                <tbody>
+                  <tr><td>Pantalla / web</td><td>PNG o JPEG (texto y transparencia → PNG).</td></tr>
+                  <tr><td>Impresión</td><td>TIFF o PDF, en CMYK y a 300 ppp.</td></tr>
+                  <tr><td>Vectorial editable</td><td>SVG o formato nativo del programa.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>El <strong>formato de trabajo</strong> (.xcf en GIMP, .svg en Inkscape) conserva capas; el exportado es solo el resultado final. Guardar como JPG sobre el original destruye las capas: trabaja siempre sobre el archivo de trabajo.</p>
+            <aside class="aviso" aria-label="Aviso sobre formatos de trabajo"><strong>Dos archivos, dos papeles</strong><p>El formato de trabajo guarda capas y se sigue editando; el exportado es la entrega. Confundirlos es la causa número uno de perder horas de trabajo.</p></aside>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">05 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>GIMP (píxeles) e Inkscape (vectores) son las herramientas del aula; las capas permiten editar sin destruir.</li>
+              <li>El retoque ajusta luz, color y defectos; el histograma guía los niveles y la ética marca los límites.</li>
+              <li>Componer es extraer, transformar y fundir: la coherencia de luz y sombra hace creíble un montaje.</li>
+              <li>El vectorial usa formas, pluma, curvas de Bézier, texto y operaciones booleanas.</li>
+              <li>Se guarda el formato de trabajo y se exporta el resultado: PNG/JPEG/WebP o TIFF/PDF.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E2_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E2_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E2_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E2_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E2_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E2_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E2_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E2_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E2_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E2_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E2_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E2_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E2_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E2_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E2_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E2_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E2_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E2_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E2_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E2_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">06 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://docs.gimp.org/es/">Documentación de GIMP</a>. Manual oficial con tutoriales de capas, selecciones, retoque y exportación.</li>
+              <li><a href="https://inkscape.org/es/">Inkscape</a>. Sitio oficial del editor vectorial libre, con documentación y tutoriales.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 10 · Edición de imagen: retocar, componer y crear</strong><br><small>Bloque C · 2.ª evaluación</small></p>
+      <p><a href="tema_09.html">← Anterior: tema 9</a> · <a href="tema_11.html">Siguiente: tema 11 →</a><br><small><a href="../../programa.html#evaluacion_2">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

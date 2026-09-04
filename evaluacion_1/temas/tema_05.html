@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 5 de Ciencias de la Computación II: planificar, configurar y comprobar una red local, y resolver incidencias.">
+  <title>Tema 5: Configurar una red local</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_05.html" aria-current="page">Tema 5</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_1">1.ª evaluación</a></li><li aria-current="page">Tema 5</li></ol>
+    </nav>
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 5 · Bloque A · Primera evaluación</p>
+          <h1>Configurar una red local</h1>
+          <p class="hero_intro">Configurar una red local es aplicar el modelo de capas con las manos: asignar direcciones, conectar electrónica y comprobar de abajo arriba.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>8–9 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>planificar una pequeña red antes de montarla;</li>
+            <li>configurar estaciones con IP estática o DHCP;</li>
+            <li>comprobar la conectividad con comandos;</li>
+            <li>resolver las incidencias más comunes.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#planificar">1. Planificar</a></li>
+            <li><a href="#configurar_estacion">2. Configurar la estación</a></li>
+            <li><a href="#electronica">3. Electrónica de red</a></li>
+            <li><a href="#comprobar">4. Comprobar conectividad</a></li>
+            <li><a href="#servicios">5. Servicios básicos</a></li>
+            <li><a href="#incidencias">6. Incidencias</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Un equipo ve a los compañeros pero no Internet: ¿qué capa sospecharías primero y cómo lo comprobarías?
+          </div>
+          <section id="planificar">
+            <span class="etiqueta">01 / PLAN</span>
+            <h2>Planificar antes de montar</h2>
+            <p>Montar una red sin plan es garantizar retoques. Antes del primer cable conviene responder cuatro preguntas:</p>
+            <ul class="lista_comprobacion">
+              <li><strong>¿Cuántos equipos y de qué tipo?</strong> Fijos y móviles cambian la mezcla de cable y Wi-Fi.</li>
+              <li><strong>¿Qué topología?</strong> En la práctica, estrella: conmutador central y punto de acceso si hay móviles.</li>
+              <li><strong>¿Qué direcciones?</strong> Un rango privado como <code>192.168.1.0/24</code>; IPs fijas para servidores e impresoras.</li>
+              <li><strong>¿Quién reparte?</strong> El router por DHCP para los equipos; fijas para lo esencial.</li>
+            </ul>
+            <p>Dibuja después un <strong>esquema</strong>: cada equipo, su línea al conmutador o punto de acceso y su dirección. Ese papel vale más que la memoria.</p>
+          </section>
+          <section id="configurar_estacion">
+            <span class="etiqueta">02 / ESTACIÓN</span>
+            <h2>Configurar la estación</h2>
+            <p>Cada equipo necesita cuatro parámetros: su <strong>IP</strong>, la <strong>máscara</strong>, la <strong>puerta de enlace</strong> y un <strong>DNS</strong>. Con DHCP los recibe solos al conectarse; con IP estática los escribes a mano: lo adecuado para servidores, impresoras y puestos que deben tener siempre la misma dirección.</p>
+            <pre><code>ipconfig        (Windows)   → ver mi configuración
+ip a            (Linux)     → ver mis direcciones
+ipconfig /all   (Windows)   → ver también DNS y MAC</code></pre>
+            <p>Con la máscara o la puerta de enlace mal puestas, el equipo habla con su red local pero nunca sale de ella.</p>
+          </section>
+          <section id="electronica">
+            <span class="etiqueta">03 / ELECTRÓNICA</span>
+            <h2>Electrónica de red: conmutador y punto de acceso</h2>
+            <p>El <strong>conmutador</strong> funciona casi sin configuración: se conectan los cables y los LED de enlace confirman cada puerto. El <strong>punto de acceso</strong> exige decisiones: el <strong>SSID</strong> (nombre visible de la red), la banda (2,4 o 5 GHz), un canal y, sobre todo, la seguridad: contraseña robusta con <strong>WPA2 o WPA3</strong>. El router, por su parte, reparte direcciones (DHCP) y aplica NAT al salir a Internet.</p>
+            <aside class="aviso" aria-label="Aviso de seguridad inalámbrica"><strong>Nunca</strong><p>Una red abierta o con WEP invita a cualquiera a usarla y a observar su tráfico; la contraseña es la frontera de tu red.</p></aside>
+          </section>
+          <section id="comprobar">
+            <span class="etiqueta">04 / PRUEBAS</span>
+            <h2>Comprobar la conectividad</h2>
+            <p>La comprobación sigue las capas de abajo arriba. Cada comando responde a una pregunta distinta:</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th>Comando</th><th>Pregunta que responde</th></tr></thead>
+                <tbody>
+                  <tr><td><code>ping 127.0.0.1</code></td><td>¿Funciona mi propia pila de red?</td></tr>
+                  <tr><td><code>ping 192.168.1.1</code></td><td>¿Llego a la puerta de enlace (red local)?</td></tr>
+                  <tr><td><code>ping 8.8.8.8</code></td><td>¿Salgo a Internet (enrutado y NAT)?</td></tr>
+                  <tr><td><code>nslookup ejemplo.es</code></td><td>¿Resuelve el DNS?</td></tr>
+                  <tr><td><code>tracert / traceroute</code></td><td>¿Hasta qué salto se pierde el camino?</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Si responde el primero y no el segundo, el problema está entre tu equipo y el router: cable, puerto o configuración. Si responde la IP y no el nombre, el sospechoso es el DNS.</p>
+          </section>
+          <section id="servicios">
+            <span class="etiqueta">05 / SERVICIOS</span>
+            <h2>Servicios básicos de red</h2>
+            <p>Con los equipos conectados llegan los servicios: <strong>impresoras de red</strong> (se instalan apuntando a su IP), <strong>carpetas compartidas</strong> con permisos y un <strong>DNS local</strong> para nombrar equipos. El <strong>DHCP</strong> del router, ese servidor que viste en el tema 1, evita configurar cada equipo a mano.</p>
+          </section>
+          <section id="incidencias">
+            <span class="etiqueta">06 / INCIDENCIAS</span>
+            <h2>Resolver incidencias</h2>
+            <p>Con el método de capas, los casos típicos se resuelven en minutos:</p>
+            <ul class="lista_comprobacion">
+              <li><strong>Sin LED de enlace:</strong> cable o puerto mal, tarjeta deshabilitada.</li>
+              <li><strong>Dirección 169.254.x.x:</strong> el DHCP no respondió y el equipo se autoasignó una IP.</li>
+              <li><strong>Se ven los compañeros pero no Internet:</strong> puerta de enlace, router o línea del operador.</li>
+              <li><strong>No carga nada por nombre, sí por IP:</strong> el DNS está mal o caído.</li>
+              <li><strong>Dos equipos con la misma IP:</strong> conflictos intermitentes; usa DHCP o revisa las fijas.</li>
+            </ul>
+            <p>Documenta cada incidencia (qué se probó, qué se cambió): será tu diagnóstico más rápido.</p>
+          </section>
+          <section id="resumen">
+            <span class="etiqueta">07 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>Antes de montar: inventario, estrella, direcciones y quién las reparte.</li>
+              <li>Cada equipo necesita IP, máscara, puerta de enlace y DNS: por DHCP o en fijo.</li>
+              <li>El punto de acceso se asegura con WPA2/WPA3 y contraseña robusta.</li>
+              <li>Ping, ipconfig y nslookup comprueban la red capa a capa.</li>
+              <li>Compartir impresoras, carpetas y nombres hace útil a la red.</li>
+              <li>Las incidencias se resuelven de la física hacia arriba, y se documentan.</li>
+            </ol>
+          </section>
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E1_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E1_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E1_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E1_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E1_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E1_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E1_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E1_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E1_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E1_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E1_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E1_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E1_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E1_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E1_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E1_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E1_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E1_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E1_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E1_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">08 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle, con casos y diagnósticos: elegir la configuración adecuada o interpretar la salida de un comando.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://ubuntu.com/server/docs/network-configuration">Documentación de red de Ubuntu</a>. Configuración de interfaces con ejemplos reales.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 5 · Configurar una red local</strong><br><small>Bloque A · Primera evaluación</small></p>
+      <p><a href="tema_04.html">← Anterior: tema 4</a> · <a href="tema_06.html">Siguiente: tema 6 →</a><br><small><a href="../../programa.html#evaluacion_1">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>
