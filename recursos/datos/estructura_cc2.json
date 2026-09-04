@@ -1,6 +1,6 @@
 {
   "curso": "Ciencias de la Computación II",
-  "nivel": "2.º de Bachillerato",
+  "nivel": "2º de Bachillerato",
   "curso_escolar": "2026–2027",
   "comunidad": "Comunidad de Madrid",
   "horas_semanales": 4,
@@ -65,7 +65,7 @@
     "4.3 Conocer diferentes entornos de programación y entornos para la creación de aplicaciones para móviles, valorando las posibilidades que ofrecen en cada caso."
   ],
   "fuentes": [
-    {"texto": "Orden 1736/2023, de 19 de mayo, de la Consejería de Educación, Anexo IV (Ciencias de la Computación, 1.º y 2.º de Bachillerato).", "url": "https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF"},
+    {"texto": "Orden 1736/2023, de 19 de mayo, de la Consejería de Educación, Anexo IV (Ciencias de la Computación, 1.º y 2º de Bachillerato).", "url": "https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF"},
     {"texto": "Decreto 64/2022, de 20 de julio, del Consejo de Gobierno (ordenación y currículo del Bachillerato en la Comunidad de Madrid).", "url": "https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF"}
   ]
 }

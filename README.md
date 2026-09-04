@@ -1,6 +1,6 @@
-# Ciencias de la Computación II · 2.º de Bachillerato
+# Ciencias de la Computación II · 2º de Bachillerato
 
-Sitio web estático y portable para la materia optativa **Ciencias de la Computación II** (2.º de Bachillerato, Comunidad de Madrid, curso 2026–2027). Publicado con GitHub Pages: <https://valorar.github.io/cc_computacion_2/>
+Sitio web estático y portable para la materia optativa **Ciencias de la Computación II** (2º de Bachillerato, Comunidad de Madrid, curso 2026–2027). Publicado con GitHub Pages: <https://valorar.github.io/cc_computacion_2/>
 
 ## Contenido
 
