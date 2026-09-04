@@ -160,6 +160,7 @@ figcaption { margin-top: 0.65rem; color: var(--tinta_suave); font-size: 0.88rem;
 h1, h2, h3 { font-family: var(--serif); text-wrap: balance; }
 h1 { max-width: 12ch; margin: 0; font-size: clamp(3.25rem, 8vw, 7rem); line-height: 0.92; letter-spacing: -0.045em; }
 .hero h1 { max-width: 26ch; font-size: clamp(2.6rem, 5.5vw, 4.9rem); letter-spacing: -0.03em; }
+.hero h2 { max-width: 26ch; margin: 0.7rem 0 0; font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.1; }
 .hero_programa h1, .hero_tema h1 { max-width: 16ch; font-size: clamp(2.8rem, 6.5vw, 5.9rem); }
 .hero_intro { margin: 1.5rem 0 0.4rem; max-width: 43rem; color: var(--tinta_suave); font-family: var(--serif); font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.45; }
 .hero_lista { display: grid; grid-template-columns: repeat(2, minmax(0, auto)); gap: 0.3rem 2.2rem; margin: 0; padding: 0.4rem 0 0; list-style: none; }
