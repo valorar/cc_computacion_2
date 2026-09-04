@@ -159,8 +159,13 @@ figcaption { margin-top: 0.65rem; color: var(--tinta_suave); font-size: 0.88rem;
 }
 h1, h2, h3 { font-family: var(--serif); text-wrap: balance; }
 h1 { max-width: 12ch; margin: 0; font-size: clamp(3.25rem, 8vw, 7rem); line-height: 0.92; letter-spacing: -0.045em; }
+.hero h1 { max-width: 26ch; font-size: clamp(2.6rem, 5.5vw, 4.9rem); letter-spacing: -0.03em; }
 .hero_programa h1, .hero_tema h1 { max-width: 16ch; font-size: clamp(2.8rem, 6.5vw, 5.9rem); }
-.hero_intro { margin: 1.5rem 0 0; max-width: 43rem; color: var(--tinta_suave); font-family: var(--serif); font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.45; }
+.hero_intro { margin: 1.5rem 0 0.4rem; max-width: 43rem; color: var(--tinta_suave); font-family: var(--serif); font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.45; }
+.hero_lista { display: grid; grid-template-columns: repeat(2, minmax(0, auto)); gap: 0.3rem 2.2rem; margin: 0; padding: 0.4rem 0 0; list-style: none; }
+.hero_lista li { padding-left: 1.4rem; position: relative; font-size: clamp(1.05rem, 1.5vw, 1.25rem); }
+.hero_lista li::before { content: "→"; position: absolute; left: 0; color: var(--verde); font-weight: 700; }
+@media (max-width: 480px) { .hero_lista { grid-template-columns: 1fr; } }
 .hero_lateral { border-top: 5px solid var(--tinta); padding-top: 1.1rem; }
 .hero_lateral p { margin: 0 0 1.2rem; }
 .acciones { display: flex; flex-wrap: wrap; gap: 0.65rem; }
