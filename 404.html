@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#eef2f4">
+  <title>Error 404 · Página no encontrada · CC2</title>
+  <link rel="icon" href="/cc_computacion_2/assets/img/favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      color-scheme: light;
+      --papel: #eef2f4;
+      --tinta: #17212b;
+      --foco: #0b5394;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      display: grid;
+      place-items: center;
+      margin: 0;
+      padding: clamp(1rem, 4vw, 3rem);
+      background: var(--papel);
+      color: var(--tinta);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main { width: min(100%, 1280px); }
+
+    .imagen_404 {
+      display: block;
+      border-radius: 1rem;
+      outline: 0 solid transparent;
+      box-shadow: 0 16px 45px rgb(23 33 43 / 14%);
+      transition: transform 160ms ease, box-shadow 160ms ease, outline 160ms ease;
+    }
+
+    .imagen_404:hover {
+      transform: translateY(-3px);
+           box-shadow: 0 20px 55px rgb(23 33 43 / 20%);
+    }
+
+    .imagen_404:focus-visible {
+      outline: 5px solid var(--foco);
+      outline-offset: 6px;
+    }
+
+    .imagen_404 img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: inherit;
+    }
+
+    .solo_lectores {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .imagen_404 { transition: none; }
+      .imagen_404:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="solo_lectores">Error 404: página no encontrada</h1>
+    <p class="solo_lectores">Parece que el gato ha estado jugando con los cables. Pulsa la imagen para volver a la página anterior.</p>
+    <a class="imagen_404" href="/cc_computacion_2/" aria-label="Volver a la página anterior" onclick="if (history.length > 1) { history.back(); return false; }">
+      <img src="/cc_computacion_2/assets/img/error_404_gato.jpg" width="1280" height="714" alt="Error 404, página no encontrada. Un gato naranja juega con un cable junto a un teclado. Pulsa para volver a la página anterior.">
+    </a>
+  </main>
+</body>
+</html>
