@@ -190,9 +190,9 @@ h1 { max-width: 12ch; margin: 0; font-size: clamp(3.25rem, 8vw, 7rem); line-heig
 .boton[aria-disabled="true"] { cursor: not-allowed; opacity: 0.65; }
 
 .franja_datos { border-bottom: 1px solid var(--linea); background: var(--papel_claro); }
-.lista_datos { display: grid; grid-template-columns: repeat(4, 1fr); width: min(calc(100% - 2rem), 64rem); margin: 0 auto; padding: 1.1rem 0; list-style: none; }
-.lista_datos li { padding: 0.35rem 1rem; border-left: 1px solid var(--linea); text-align: center; }
-.lista_datos li:first-child { border-left: 0; }
+.lista_datos { display: grid; grid-template-columns: repeat(4, 1fr); width: min(calc(100% - 2rem), 70rem); margin: 0 auto; padding: 1.1rem 0; list-style: none; }
+.lista_datos li { padding: 0.35rem 1.2rem; border-left: 1px solid var(--linea); }
+.lista_datos li:first-child { padding-left: 0; border-left: 0; }
 .lista_datos strong { display: block; font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase; }
 .lista_datos span { color: var(--tinta_suave); font-size: 0.92rem; }
 
@@ -226,7 +226,7 @@ h3 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.
 .nota { padding: 1rem 1.2rem; border: 1px solid var(--linea); background: var(--papel_claro); }
 
 .indice_pagina { padding: 1.2rem 0; border-bottom: 1px solid var(--linea); background: var(--papel_claro); }
-.indice_pagina ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem 1.2rem; width: min(calc(100% - 2rem), 64rem); margin: 0 auto; padding: 0; list-style: none; }
+.indice_pagina ul { display: flex; flex-wrap: wrap; gap: 0.45rem 1.2rem; margin: 0; padding: 0; list-style: none; }
 .indice_pagina a { font-size: 0.88rem; font-weight: 700; }
 
 .evaluacion { margin: 4rem 0 5rem; }
