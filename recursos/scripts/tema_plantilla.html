@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PLANTILLA">
+  <title>PLANTILLA</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_NN.html" aria-current="page">Tema NN</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_N">N.ª evaluación</a></li><li aria-current="page">Tema NN</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema NN · Bloque X · N.ª evaluación</p>
+          <h1>TÍTULO DEL TEMA</h1>
+          <p class="hero_intro">FRASE DE Apertura CONCEPTUAL.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>X–Y sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>objetivo observable 1;</li>
+            <li>objetivo observable 2;</li>
+            <li>objetivo observable 3;</li>
+            <li>objetivo observable 4.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#seccion1">1. PRIMERA SECCIÓN</a></li>
+            <li><a href="#seccion2">2. SEGUNDA SECCIÓN</a></li>
+            <li><a href="#seccion3">3. TERCERA SECCIÓN</a></li>
+            <li><a href="#seccion4">4. CUARTA SECCIÓN</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            PREGUNTA QUE INVITA A INVESTIGAR EN EL AULA.
+          </div>
+
+          <section id="seccion1">
+            <span class="etiqueta">01 / RÓTULO</span>
+            <h2>Título de la sección</h2>
+            <p>Contenido teórico breve, visual y conectado con la práctica. Sin soluciones de prácticas.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>Una idea en una frase.</aside>
+          </section>
+
+          <section id="seccion2">
+            <span class="etiqueta">02 / RÓTULO</span>
+            <h2>Título de la sección</h2>
+            <p>Más contenido con comparaciones, tablas o ejemplos.</p>
+            <div class="comparacion">
+              <div><h3>Concepto A</h3><p>Definición breve.</p></div>
+              <div><h3>Concepto B</h3><p>Definición breve.</p></div>
+            </div>
+          </section>
+
+          <section id="seccion3">
+            <span class="etiqueta">03 / RÓTULO</span>
+            <h2>Título de la sección</h2>
+            <p>Contenido con código o procedimiento si procede.</p>
+          </section>
+
+          <section id="seccion4">
+            <span class="etiqueta">04 / RÓTULO</span>
+            <h2>Título de la sección</h2>
+            <p>Última parte del desarrollo teórico.</p>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">05 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>Frase esencial 1.</li>
+              <li>Frase esencial 2.</li>
+              <li>Frase esencial 3.</li>
+              <li>Frase esencial 4.</li>
+              <li>Frase esencial 5.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Estas prácticas de la evaluación aplican lo aprendido en este tema:</p>
+            <ol class="enlaces_teoria">
+              <li><a href="../practicas/practica_NN.html"><strong>E1_PNN</strong> · Título de la práctica</a> <span class="pildora modalidad_auto">Moodle</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">06 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li>Fuente de ampliación específica del tema (documentación oficial o fiable).</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema NN · TÍTULO DEL TEMA</strong><br><small>Bloque X · N.ª evaluación</small></p>
+      <p><a href="tema_XX.html">← Anterior: tema XX</a> · <a href="tema_YY.html">Siguiente: tema YY →</a><br><small><a href="../../programa.html#evaluacion_N">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>
