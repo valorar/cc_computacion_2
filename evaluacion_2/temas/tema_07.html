@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 7 de Ciencias de la Computación II: malware, vectores de ataque, prevención y hacking ético.">
+  <title>Tema 7: Amenazas: malware y vectores de ataque</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_07.html" aria-current="page">Tema 7</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_2">2.ª evaluación</a></li><li aria-current="page">Tema 7</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 7 · Bloque B · 2.ª evaluación</p>
+          <h1>Amenazas: malware y vectores de ataque</h1>
+          <p class="hero_intro">Un equipo conectado está expuesto a programas que intentan entrar; conocerlos es el primer paso para frenarlos.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>6–7 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>identificar las familias de malware y su comportamiento;</li>
+            <li>reconocer vectores de ataque y la vulnerabilidad que explotan;</li>
+            <li>describir la cadena de un ataque y las capas que la frenan;</li>
+            <li>explicar qué es el hacking ético y por qué exige autorización.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#malware">1. Malware</a></li>
+            <li><a href="#vectores">2. Vectores y cadena</a></li>
+            <li><a href="#prevencion">3. Prevención</a></li>
+            <li><a href="#etico">4. Hacking ético</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Si el antivirus suele avisarte cuando el malware ya ha entrado… ¿qué tendrías que hacer para que no llegara a entrar?
+          </div>
+
+          <section id="malware">
+            <span class="etiqueta">01 / MALWARE</span>
+            <h2>Malware: programas con mala intención</h2>
+            <p><strong>Malware</strong> (<em>malicious software</em>) es todo programa que daña, se infiltra u obtiene beneficios sin consentimiento; no es un único invento, sino una familia con comportamientos distintos.</p>
+            <div class="tabla_responsiva" tabindex="0">
+              <table>
+                <thead><tr><th>Familia</th><th>Qué hace</th></tr></thead>
+                <tbody>
+                  <tr><td>Virus</td><td>Se adjunta a otros programas y se propaga al ejecutarlos.</td></tr>
+                  <tr><td>Gusano</td><td>Se replica solo por la red, sin infectar archivos.</td></tr>
+                  <tr><td>Troyano</td><td>Se disfraza de programa legítimo y abre una puerta trasera.</td></tr>
+                  <tr><td>Ransomware</td><td>Cifra los datos y exige un rescate para devolverlos.</td></tr>
+                  <tr><td>Spyware</td><td>Espía y roba información; el <em>keylogger</em> captura teclas.</td></tr>
+                  <tr><td>Rootkit</td><td>Se oculta en el sistema para mantener el control remoto.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Los equipos controlados en remoto forman <strong>botnets</strong> que envían spam o atacan servidores. El malware se clasifica por su comportamiento, no por su nombre.</p>
+          </section>
+
+          <section id="vectores">
+            <span class="etiqueta">02 / VECTORES Y CADENA</span>
+            <h2>Vectores de ataque y la cadena del ataque</h2>
+            <p>Un <strong>vector de ataque</strong> es la vía que usa el atacante (correo, USB, web…) y aprovecha una <strong>vulnerabilidad</strong>: un punto débil del software, la configuración o las personas.</p>
+            <ul>
+              <li><strong>Correo y mensajería:</strong> el <strong>phishing</strong> suplanta a una entidad para robar credenciales; por SMS y llamada, <em>smishing</em> y <em>vishing</em>.</li>
+              <li><strong>Descargas inseguras:</strong> «cracks» y programas no oficiales, canal favorito del troyano.</li>
+              <li><strong>Dispositivos físicos:</strong> un USB encontrado puede ejecutar malware al conectarlo.</li>
+              <li><strong>Software sin actualizar:</strong> el <em>exploit</em> aprovecha un fallo conocido hasta que llega el parche.</li>
+            </ul>
+            <p>Casi todos los vectores terminan en una acción humana: abrir, aceptar, enchufar. La <strong>ingeniería social</strong> manipula a la persona antes que a la máquina. El ataque avanza en cadena: <strong>distribuir</strong>, lograr la <strong>ejecución</strong> (un clic), <strong>persistir</strong> tras reinicios y actuar (cifrar, robar, espiar). Cortarla pronto abarata la defensa.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>El vector es el <em>cómo</em>; la vulnerabilidad, el <em>por dónde</em>. Cada eslabón de la cadena es una oportunidad de frenar el ataque.</aside>
+          </section>
+
+          <section id="prevencion">
+            <span class="etiqueta">03 / PREVENCIÓN</span>
+            <h2>Prevenir: seguridad en capas</h2>
+            <p>Ninguna medida única detiene todos los ataques. La <strong>defensa en profundidad</strong> superpone capas independientes: si una falla, protegen las demás.</p>
+            <ul class="lista_comprobacion">
+              <li>Actualizar sistema y aplicaciones: cada parche cierra vulnerabilidades.</li>
+              <li>Antivirus al día, que detecte firmas y comportamientos sospechosos.</li>
+              <li>Descargar solo de fuentes oficiales y verificar la integridad de los archivos.</li>
+              <li>Copias de seguridad <strong>3-2-1</strong>: tres copias, dos soportes, una fuera del equipo.</li>
+              <li>Desconfiar de la presión: «actualiza tu cuenta ya» es la herramienta del engaño.</li>
+            </ul>
+            <p>Rutina básica en el aula: actualizar paquetes al empezar la sesión con <code>sudo apt update</code> y <code>sudo apt full-upgrade</code>.</p>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>La seguridad no se instala: se practica. Actualizar, copiar, limitar privilegios y sospechar de lo urgente.</aside>
+          </section>
+
+          <section id="etico">
+            <span class="etiqueta">04 / HACKING ÉTICO</span>
+            <h2>Hacking ético: atacar para proteger</h2>
+            <p>El <strong>hacking ético</strong> busca vulnerabilidades en un sistema <em>con permiso de su propietario</em> para corregirlas antes de que las explote un atacante. Una prueba de penetración (<em>pentesting</em>) sigue fases: <strong>reconocimiento</strong>, <strong>escaneo</strong>, <strong>explotación</strong> (siempre dentro del alcance autorizado) e <strong>informe</strong>, que es el verdadero producto.</p>
+            <aside class="aviso" aria-label="Aviso legal"><strong>Autorización ante todo</strong><p>Atacar un sistema ajeno sin permiso es delito, aunque la intención sea «demostrar que se puede»: aquí solo se practica sobre equipos propios del aula. Hay sombreros blancos (autorizados), negros (atacantes) y grises (sin permiso aunque sin malicia).</p></aside>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">05 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>El malware es una familia de programas con comportamientos distintos: virus, gusanos, troyanos, ransomware, spyware y rootkits.</li>
+              <li>Un vector de ataque es la vía de entrada y explota una vulnerabilidad, muchas veces humana (ingeniería social).</li>
+              <li>El ataque funciona en cadena: distribuir, ejecutar, persistir y actuar; cortarla pronto limita el daño.</li>
+              <li>La defensa eficaz es en capas: actualizaciones, antivirus, copias 3-2-1, privilegios limitados y prudencia.</li>
+              <li>El hacking ético busca vulnerabilidades con autorización; sin permiso, la misma técnica es delito.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E2_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E2_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E2_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E2_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E2_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E2_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E2_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E2_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E2_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E2_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E2_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E2_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E2_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E2_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E2_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E2_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E2_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E2_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E2_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E2_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">06 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://www.incibe.es/">INCIBE</a>. Guías y avisos de ciberseguridad del Instituto Nacional de Ciberseguridad.</li>
+              <li><a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten</a>. Catálogo de los riesgos de seguridad más comunes y sus mitigaciones.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 7 · Amenazas: malware y vectores de ataque</strong><br><small>Bloque B · 2.ª evaluación</small></p>
+      <p><a href="../../evaluacion_1/temas/tema_06.html">← Tema 6 (1.ª evaluación)</a> · <a href="tema_08.html">Siguiente: tema 8 →</a><br><small><a href="../../programa.html#evaluacion_2">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

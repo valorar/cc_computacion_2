@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 8 de Ciencias de la Computación II: criptografía, clave simétrica y asimétrica, hash, firmas, certificados y autenticación.">
+  <title>Tema 8: Criptografía y autenticación</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_08.html" aria-current="page">Tema 8</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_2">2.ª evaluación</a></li><li aria-current="page">Tema 8</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 8 · Bloque B · 2.ª evaluación</p>
+          <h1>Criptografía y autenticación</h1>
+          <p class="hero_intro">Cuando compras o inicias sesión, tus datos viajan cifrados por redes que no controlas; la criptografía permite confiar en un canal inseguro.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>6 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>explicar qué protege la criptografía: confidencialidad, integridad y autenticidad;</li>
+            <li>diferenciar cifrado simétrico y asimétrico y saber cuándo se combinan;</li>
+            <li>usar funciones hash para verificar la integridad de archivos;</li>
+            <li>explicar firmas, certificados y HTTPS y reforzar tu autenticación.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#basicos">1. Qué protege la criptografía</a></li>
+            <li><a href="#claves">2. Claves simétricas y asimétricas</a></li>
+            <li><a href="#hash">3. Hash, firmas y certificados</a></li>
+            <li><a href="#autenticacion">4. Autenticación</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Si cualquier equipo intermedio puede leer los datos que envías… ¿cómo sabe tu banco que la conversación es contigo y no con un impostor?
+          </div>
+
+          <section id="basicos">
+            <span class="etiqueta">01 / BÁSICOS</span>
+            <h2>Qué protege la criptografía</h2>
+            <p>La <strong>criptografía</strong> transforma la información para que solo pueda leerla quien está autorizado. Sus garantías: <strong>confidencialidad</strong> (solo el destinatario legítimo lee), <strong>integridad</strong> (el mensaje no se altera) y <strong>autenticidad</strong> (sabemos quién lo envió; no puede negarlo).</p>
+            <p><strong>Cifrar</strong> no es <strong>codificar</strong>: la codificación (Morse, base64) es reversible y sin secreto; el cifrado necesita una clave. Romper un texto cifrado sin clave debe ser inviable aunque se conozca el algoritmo: la seguridad reside en la clave, no en ocultar el método.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>Los algoritmos modernos son públicos y auditables: lo único secreto es la clave.</aside>
+          </section>
+
+          <section id="claves">
+            <span class="etiqueta">02 / CLAVES</span>
+            <h2>Claves simétricas y asimétricas</h2>
+            <p>Existen dos grandes familias de cifrado; la diferencia está en quién conoce las claves.</p>
+            <div class="comparacion">
+              <div><h3>Simétrico</h3><p>Una clave compartida cifra y descifra (AES). Rápido; problema: entregar la clave sin que la intercepten.</p></div>
+              <div><h3>Asimétrico</h3><p>Par de claves: pública y privada (RSA, curvas elípticas). Lento, pero resuelve el reparto de claves.</p></div>
+            </div>
+            <p>En la práctica se usa cifrado <strong>híbrido</strong>: la parte asimétrica negocia una clave de sesión y la simétrica cifra los datos con ella. Es lo que ocurre cada vez que abres una página con HTTPS: el candado indica que la conexión está cifrada y que el servidor ha demostrado su identidad con un certificado.</p>
+          </section>
+
+          <section id="hash">
+            <span class="etiqueta">03 / HASH Y FIRMAS</span>
+            <h2>Hash, firmas y certificados</h2>
+            <p>Una <strong>función hash</strong> convierte cualquier dato en una cadena de longitud fija (los 64 caracteres de SHA-256). No es cifrado: no tiene clave ni vuelta atrás. Es <strong>determinista</strong> (mismo dato, mismo resumen), <strong>unidireccional</strong> (del resumen no se recupera el dato) y con <strong>efecto avalancha</strong> (cambiar un bit lo cambia todo): propiedades ideales para la integridad.</p>
+            <p>Por eso las páginas de descarga publican el hash de cada archivo: si el tuyo no coincide, algo se manipuló en el camino. Comprueba en el aula con <code>sha256sum archivo.iso</code> y compara con la web oficial.</p>
+            <p>La <strong>firma digital</strong> combina hash y clave asimétrica: se cifra el resumen con la clave privada del emisor y cualquiera lo verifica con su clave pública, garantizando integridad y autenticidad a la vez. Para confiar en que una clave pública es de quien dice, una autoridad de certificación (<strong>CA</strong>) la firma dentro de un <strong>certificado digital</strong>, que valida las webs HTTPS.</p>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>El hash «sella» el contenido: cualquier cambio delata; la firma añade quién lo selló.</aside>
+          </section>
+
+          <section id="autenticacion">
+            <span class="etiqueta">04 / AUTENTICACIÓN</span>
+            <h2>Autenticación: demostrar quién eres</h2>
+            <p>La <strong>autenticación</strong> verifica la identidad de quien pide acceso. Los factores clásicos: <strong>algo que sabes</strong> (contraseña), <strong>algo que tienes</strong> (móvil, llave física) y <strong>algo que eres</strong> (huella, rostro). El <strong>doble factor</strong> combina dos categorías: robar una sola ya no basta.</p>
+            <ul class="lista_comprobacion">
+              <li>Contraseñas largas y únicas, guardadas en un gestor.</li>
+              <li>Doble factor con app TOTP o llave física, no con SMS.</li>
+              <li>Claves de acceso (<em>passkeys</em>): el dispositivo guarda el par y nunca envía la privada.</li>
+              <li>Verificar también al otro lado: HTTPS y certificados.</li>
+            </ul>
+            <p>Los sistemas guardan las contraseñas como hash con una <strong>sal</strong> (valor aleatorio por usuario) para que una fuga de datos no las exponga en claro; los gestores de contraseñas aplican la misma idea con una única clave maestra.</p>
+            <aside class="aviso" aria-label="Aviso de seguridad"><strong>Nadie legítimo pide tu código</strong><p>Ningún servicio real solicita el código de verificación «para confirmar que eres tú»: quien lo pida intenta suplantarte.</p></aside>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">05 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>La criptografía protege confidencialidad, integridad y autenticidad; la seguridad reside en la clave.</li>
+              <li>El cifrado simétrico usa una clave compartida (rápido); el asimétrico, un par público-privado (seguro al repartir claves).</li>
+              <li>Los protocolos reales son híbridos: negocian la clave de sesión con asimetría y cifran con simetría.</li>
+              <li>El hash verifica integridad; la firma añade autoría; los certificados autentican las claves públicas.</li>
+              <li>La autenticación fuerte combina contraseña gestionada, doble factor y verificación del otro lado.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E2_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E2_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E2_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E2_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E2_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E2_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E2_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E2_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E2_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E2_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E2_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E2_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E2_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E2_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E2_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E2_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E2_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E2_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E2_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E2_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">06 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://www.incibe-cert.es/">INCIBE-CERT</a>. Avisos y guías técnicas de ciberseguridad, incluida la verificación de archivos y la autenticación.</li>
+              <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a>. Buenas prácticas de autenticación, en abierto.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 8 · Criptografía y autenticación</strong><br><small>Bloque B · 2.ª evaluación</small></p>
+      <p><a href="tema_07.html">← Anterior: tema 7</a> · <a href="tema_09.html">Siguiente: tema 9 →</a><br><small><a href="../../programa.html#evaluacion_2">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

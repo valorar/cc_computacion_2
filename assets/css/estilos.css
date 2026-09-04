@@ -274,8 +274,8 @@ th { background: var(--verde); color: var(--blanco); font-family: var(--mono); f
 .hito p { margin: 0.25rem 0 0; }
 .hito p span { color: var(--tinta_suave); }
 
-.comparacion { display: grid; grid-template-columns: repeat(2, 1fr); margin: 2rem 0; border: 2px solid var(--tinta); }
-.comparacion > div { padding: 1.4rem; }
+.comparacion { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 2rem 0; border: 2px solid var(--tinta); }
+.comparacion > div { min-width: 0; padding: 1.4rem; }
 .comparacion > div + div { border-left: 1px solid var(--tinta); }
 .comparacion h3 { margin-top: 0; }
 

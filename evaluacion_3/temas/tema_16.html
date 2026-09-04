@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 16 de CC2: proyecto final — elegir un problema real, planificar, construir una aplicación por partes, probarla, documentarla y presentar evidencias.">
+  <title>Tema 16: Proyecto: una aplicación que resuelve un problema real</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_16.html" aria-current="page">Tema 16</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_3">3.ª evaluación</a></li><li aria-current="page">Tema 16</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 16 · Bloque D · 3.ª evaluación</p>
+          <h1>Proyecto: una aplicación que resuelve un problema real</h1>
+          <p class="hero_intro">Reúnes todo el curso en un producto: eliges un problema, lo planificas, construyes la aplicación por partes, la pruebas y entregas las evidencias. Tú decides qué construir.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>8–10 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>elegir un problema real que se resuelva con una aplicación sencilla;</li>
+            <li>escribir una ficha con objetivos, usuarios, entradas, salidas y plan de trabajo;</li>
+            <li>construir la aplicación por partes, probando cada una antes de integrarla;</li>
+            <li>documentar el proyecto y presentar evidencias del proceso y del resultado.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#elegir">1. ELEGIR</a></li>
+            <li><a href="#ficha">2. PLAN</a></li>
+            <li><a href="#partes">3. PARTES</a></li>
+            <li><a href="#pruebas">4. PRUEBAS</a></li>
+            <li><a href="#entrega">5. ENTREGA</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Piensa en una tarea repetitiva que alguien de tu entorno hace cada semana con papel, una hoja de cálculo o la memoria. ¿Podrías escribir el programa que se la ahorre?
+          </div>
+
+          <section id="elegir">
+            <span class="etiqueta">01 / ELEGIR</span>
+            <h2>Elegir un problema que de verdad importe</h2>
+            <p>Un buen proyecto no es el más impresionante, sino el que <strong>alguien usaría</strong>. Criterios: el problema es real y cercano (biblioteca del aula, liga de recreo, gastos de un viaje); tiene usuarios concretos; los datos de entrada y salida están claros; y puedes terminarlo en las sesiones previstas. Evita los clásicos: «una app con cuentas», «un juego con gráficos», «el programa que lo hace todo».</p>
+            <p>Las mismas fases sirven para una interfaz web o una app móvil sencilla (p. ej. App Inventor); este curso entrega una aplicación de consola en Python, pero el proceso es idéntico.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>Un problema pequeño resuelto del todo vale más que un problema grande a medias. El alcance se decide al principio y no se mueve sin motivo.</aside>
+          </section>
+
+          <section id="ficha">
+            <span class="etiqueta">02 / PLAN</span>
+            <h2>Del problema a la ficha del proyecto</h2>
+            <p>Antes de escribir código, escribes una <strong>ficha</strong> que convierte la idea en algo comprobable. Es la disciplina del tema 15 aplicada a un producto entero. Un ejemplo para un registro de préstamos de libros:</p>
+            <ul class="lista_comprobacion">
+              <li><strong>Objetivo:</strong> saber qué libros están prestados, a quién y desde cuándo.</li>
+              <li><strong>Usuarios:</strong> la persona encargada de la biblioteca del aula.</li>
+              <li><strong>Entrada:</strong> título, persona y fecha; <strong>salida:</strong> préstamos activos y avisos de devolución.</li>
+              <li><strong>Datos:</strong> fichero JSON (tema 13) y clase Préstamo (tema 14).</li>
+              <li><strong>Plan:</strong> sesiones 1–2 ficha y datos; 3–4 núcleo; 5–6 menú; 7–8 pruebas y documentación.</li>
+            </ul>
+            <p>La ficha lista también las <strong>funciones esperadas</strong>: cada una con su nombre, qué recibe y qué devuelve. Si una función no cabe en una frase, el paso es demasiado grande: divídelo. El plan de sesiones protege el final: deja las últimas sesiones para probar y documentar, no para terminar a toda prisa.</p>
+          </section>
+
+          <section id="partes">
+            <span class="etiqueta">03 / PARTES</span>
+            <h2>Construir por partes: lógica e interfaz</h2>
+            <p>La construcción empieza por el <strong>núcleo</strong>: funciones que procesan datos sin menús, fáciles de probar porque no piden nada al usuario. Después llega la <strong>interfaz</strong>: el menú que pregunta y muestra. Separar ambas capas es la decisión de diseño más rentable del curso.</p>
+            <pre><code>def prestamos_activos(prestamos):
+    """Préstamos aún no devueltos.
+
+    Sin la clave 'devuelto', el préstamo se trata como activo:
+    un dato ausente no significa devuelto."""
+    return [p for p in prestamos if not p.get("devuelto", False)]
+
+# Pruebas: [] -> [] · 3 préstamos con 1 devuelto -> 2
+#          sin clave 'devuelto' -> se cuenta como activo</code></pre>
+            <pre><code>def main():
+    """Bucle del menú: pedir opción, actuar y repetir hasta salir."""
+    print("1. Nuevo préstamo  2. Devolver  3. Listar  0. Salir")
+
+if __name__ == "__main__":
+    main()      # al importar el módulo, este bloque no se ejecuta</code></pre>
+            <p><code>if __name__ == "__main__"</code> permite ejecutar el archivo como programa o importarlo desde una batería de pruebas sin que el menú salte solo. Cuando el núcleo responde a la ficha, se conecta el menú y el programa se vuelve una aplicación.</p>
+          </section>
+
+          <section id="pruebas">
+            <span class="etiqueta">04 / PRUEBAS</span>
+            <h2>Probar contra la ficha, no contra la suerte</h2>
+            <p>Cada requisito de la ficha tiene al menos una prueba, escrita junto a la función que lo cumple, y la batería incluye siempre el caso normal, los límites y los datos inválidos:</p>
+            <pre><code>def primera_mayuscula(palabra):
+    """Convierte la inicial en mayúscula sin tocar el resto."""
+    return palabra[:1].upper() + palabra[1:]
+
+# Batería mínima: normal, límite y error
+assert primera_mayuscula("hola") == "Hola"    # caso normal
+assert primera_mayuscula("HOLA") == "HOLA"    # no rompe mayúsculas
+assert primera_mayuscula("") == ""            # vacío: no debe explotar</code></pre>
+            <p>La prueba de regresión es el ritual de cada sesión: tras cualquier cambio se ejecuta la batería entera y el arreglo es pequeño. Al final se prueba la aplicación completa contra la ficha, incluido el arranque con el fichero vacío o dañado.</p>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>No hay «probar al final»: hay una batería que crece con cada función. La aplicación está terminada cuando la batería pasa y la ficha se cumple.</aside>
+          </section>
+
+          <section id="entrega">
+            <span class="etiqueta">05 / ENTREGA</span>
+            <h2>Documentar y presentar evidencias</h2>
+            <p>Un programa sin documentación es un tesoro sin mapa. El proyecto se entrega con un <strong>README</strong> breve que responde a cuatro preguntas: qué hace, cómo se ejecuta, qué ficheros usa y cuáles son sus funciones principales; cada función lleva su docstring y el código sigue las prácticas del tema 15.</p>
+            <p>Las <strong>evidencias</strong> demuestran el proceso, no solo el resultado: ficha inicial, batería de pruebas con resultados, capturas o demostración en vivo y autoevaluación contra la rúbrica. Presentar el proyecto en dos minutos —problema, solución, demostración— cierra el curso como empezó: explicando lo construido.</p>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">06 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>Elige un problema real, pequeño y con usuarios concretos; el alcance se fija en la ficha.</li>
+              <li>La ficha define objetivo, usuarios, entradas, salidas, funciones esperadas y plan de sesiones.</li>
+              <li>Construye primero el núcleo de funciones probables y después la interfaz.</li>
+              <li>La batería crece con cada función (normal, límites, inválidos) y se reejecuta tras cada cambio.</li>
+              <li>Entrega README, docstrings, batería con resultados y demostración: evidencias del proceso.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E3_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E3_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E3_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E3_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E3_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E3_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E3_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E3_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E3_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E3_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E3_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E3_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E3_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E3_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E3_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E3_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E3_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E3_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E3_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E3_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">07 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://docs.python.org/es/3/tutorial/index.html">Documentación oficial de Python: tutorial</a>.</li>
+              <li><a href="https://devguide.python.org/testing/">Guía del desarrollador de CPython: probar el código</a>: metodología de pruebas y depuración de un proyecto real.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 16 · Proyecto: una aplicación que resuelve un problema real</strong><br><small>Bloque D · 3.ª evaluación</small></p>
+      <p><a href="tema_15.html">← Anterior: tema 15</a> · <a href="../../index.html">Fin del curso: volver al inicio →</a><br><small><a href="../../programa.html#evaluacion_3">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

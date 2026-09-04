@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 6 de Ciencias de la Computación II: de ARPANET al Wi-Fi, la seguridad inalámbrica e IPv6.">
+  <title>Tema 6: Cronología de las redes: de ARPANET al Wi-Fi</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_06.html" aria-current="page">Tema 6</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_1">1.ª evaluación</a></li><li aria-current="page">Tema 6</li></ol>
+    </nav>
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 6 · Bloque A · Primera evaluación</p>
+          <h1>Cronología de las redes: de ARPANET al Wi-Fi</h1>
+          <p class="hero_intro">La historia de las redes es la de una idea, la conmutación de paquetes, que tardó medio siglo en llegar a tu bolsillo.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>5–6 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>situar los hitos de ARPANET a Internet;</li>
+            <li>explicar la conmutación de paquetes;</li>
+            <li>contar el nacimiento del Wi-Fi;</li>
+            <li>comparar WEP, WPA2 y WPA3 y razonar IPv6.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#terminales">1. Terminales y máquina central</a></li>
+            <li><a href="#arpanet">2. ARPANET, 1969</a></li>
+            <li><a href="#crecer">3. Correo, TCP/IP y SATNET</a></li>
+            <li><a href="#wifi">4. WaveLAN y el Wi-Fi</a></li>
+            <li><a href="#seguridad">5. Seguridad inalámbrica</a></li>
+            <li><a href="#ipv6">6. IPv6 y el futuro</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            ¿Qué tuvo que ocurrir para que la red llegara de 1969 a tu casa sin cables?
+          </div>
+          <section id="terminales">
+            <span class="etiqueta">01 / EL CENTRO</span>
+            <h2>Terminales y máquina central</h2>
+            <p>Antes de las redes actuales, los ordenadores eran <strong>mainframes</strong>: máquinas únicas, carísimas y centralizadas, a las que se conectaban <strong>terminales</strong> —pantalla y teclado sin capacidad propia— para repartir su tiempo entre todos (<strong>time sharing</strong>). Si el mainframe caía, todo el edificio se quedaba sin informática: la «red» tenía un solo cerebro con muchas ventanas.</p>
+          </section>
+          <section id="arpanet">
+            <span class="etiqueta">02 / ARPANET</span>
+            <h2>ARPANET: la primera red de paquetes</h2>
+            <p>ARPA financió una red para que universidades compartieran sus escasos ordenadores. La idea revolucionaria: la <strong>conmutación de paquetes</strong>.</p>
+            <div class="comparacion">
+              <div><h3>Circuitos (teléfono)</h3><p>Reserva un camino completo durante la llamada; si un tramo falla, se corta.</p></div>
+              <div><h3>Paquetes (ARPANET)</h3><p>El mensaje se parte; cada trozo viaja por su cuenta y se recompone al llegar.</p></div>
+            </div>
+            <div class="linea_tiempo">
+              <article class="hito"><time>1969 · Cuatro nodos</time><p><strong>Nace ARPANET.</strong> <span>UCLA, SRI, UCSB y Utah, unidos con IMP que encaminaban paquetes.</span></p></article>
+              <article class="hito"><time>29 de octubre de 1969 · «LO»</time><p><strong>Primera transferencia.</strong> <span>Desde UCLA escriben «LOGIN» en SRI; el sistema cae tras la «O».</span></p></article>
+            </div>
+            <p>La red no tenía centro: aunque un tramo desapareciera, los paquetes encontraban camino. Esa resiliencia fue el gran invento.</p>
+          </section>
+          <section id="crecer">
+            <span class="etiqueta">03 / CRECER</span>
+            <h2>Correo, TCP/IP y SATNET: de red a Internet</h2>
+            <div class="linea_tiempo">
+              <article class="hito"><time>1971 · Correo electrónico</time><p><strong>La arroba.</strong> <span>Tomlinson introduce «@»: el correo se vuelve la aplicación que todos quieren usar.</span></p></article>
+              <article class="hito"><time>1974–1983 · TCP/IP e IPv4</time><p><strong>El protocolo de Internet.</strong> <span>Cerf y Kahn lo publican en 1974; IPv4 se define en 1981; el 1 de enero de 1983 ARPANET cambia a TCP/IP.</span></p></article>
+              <article class="hito"><time>1976–1977 · SATNET</time><p><strong>El satélite.</strong> <span>Enlaces por satélite entre EE. UU. y Europa; en 1977 una demo une tres redes.</span></p></article>
+            </div>
+            <p>Ordenadores (ARPANET), luego redes (TCP/IP: Internet) y al final la web, que abrió la red a todos.</p>
+          </section>
+          <section id="wifi">
+            <span class="etiqueta">04 / SIN CABLES</span>
+            <h2>WaveLAN y el nacimiento del Wi-Fi</h2>
+            <p>Tras triunfar la LAN por cable (Ethernet, estandarizada en 1983), el salto inalámbrico llegó por otro lado: en 1985 la FCC liberó las bandas ISM y NCR desarrolló <strong>WaveLAN</strong> para sus cajas registradoras. De ahí salió el estándar <strong>802.11</strong> (1997) y la marca <strong>Wi-Fi</strong> (1999):</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th>Estándar</th><th>Año</th><th>Velocidad máx.</th></tr></thead>
+                <tbody>
+                  <tr><td>802.11</td><td>1997</td><td>2 Mbit/s</td></tr>
+                  <tr><td>802.11b · a · g</td><td>1999 · 2003</td><td>11 · 54 Mbit/s</td></tr>
+                  <tr><td>802.11n · ac (Wi-Fi 4 y 5)</td><td>2009 · 2013</td><td>600 Mbit/s · ~7 Gbit/s</td></tr>
+                  <tr><td>802.11ax (Wi-Fi 6)</td><td>2019</td><td>~9,6 Gbit/s</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Cada generación sube velocidad y bandas; la seguridad llega en el siguiente apartado.</p>
+          </section>
+          <section id="seguridad">
+            <span class="etiqueta">05 / SEGURIDAD</span>
+            <h2>La seguridad inalámbrica: de WEP a WPA3</h2>
+            <p>Las ondas no piden permiso para entrar en casa: cifrar fue una carrera entre protección y ataques.</p>
+            <div class="tabla_responsiva">
+              <table>
+                <thead><tr><th>Sistema</th><th>Año</th><th>Clave y estado</th></tr></thead>
+                <tbody>
+                  <tr><td>WEP</td><td>1997</td><td>Estática y débil: rota, no se usa.</td></tr>
+                  <tr><td>WPA</td><td>2003</td><td>Parche TKIP: puente temporal.</td></tr>
+                  <tr><td>WPA2</td><td>2004</td><td>AES-CCMP: mínimo aceptable hoy.</td></tr>
+                  <tr><td>WPA3</td><td>2018</td><td>SAE, resistente a diccionarios: el recomendado.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <aside class="aviso" aria-label="Aviso de elección de cifrado"><strong>En la práctica</strong><p>Elige WPA3 si puedes y WPA2 como mínimo; una red «abierta» no es una red, es una invitación.</p></aside>
+          </section>
+          <section id="ipv6">
+            <span class="etiqueta">06 / IPv6</span>
+            <h2>IPv6 y el futuro de la red</h2>
+            <p>Internet creció hasta agotar su sistema de direcciones: los últimos bloques grandes de IPv4 se repartieron en <strong>2011</strong>. La red convive desde entonces con <strong>IPv6</strong>, con espacio de direcciones casi inagotable.</p>
+            <p>Hoy cerca de la mitad del tráfico hacia servicios como Google usa ya IPv6, casi siempre en <strong>doble pila</strong>.</p>
+          </section>
+          <section id="resumen">
+            <span class="etiqueta">07 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>Primero hubo un ordenador central con terminales; luego, cerebros que conversan.</li>
+              <li>ARPANET (1969) demostró la conmutación de paquetes: sin centro y robusta ante fallos.</li>
+              <li>El correo (1971), TCP/IP e IPv4 (1974–1983) y SATNET unieron redes hasta formar Internet.</li>
+              <li>WaveLAN y el estándar 802.11 (1997) llevaron la red al aire: nació el Wi-Fi.</li>
+              <li>La seguridad pasó del roto WEP a WPA2/WPA3; IPv4, agotado en 2011, dio paso a IPv6.</li>
+            </ol>
+          </section>
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E1_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E1_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E1_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E1_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E1_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E1_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E1_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E1_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E1_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E1_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E1_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E1_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E1_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E1_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E1_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E1_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E1_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E1_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E1_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E1_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">08 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle, con casos: ordenar hitos, explicar una innovación o elegir cifrado.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://www.internetsociety.org/internet/history-internet/brief-history-internet/">Internet Society: Breve historia de Internet</a>.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 6 · Cronología de las redes: de ARPANET al Wi-Fi</strong><br><small>Bloque A · Primera evaluación</small></p>
+      <p><a href="tema_05.html">← Anterior: tema 5</a> · <a href="../../evaluacion_2/temas/tema_07.html">Siguiente: tema 7 →</a><br><small><a href="../../programa.html#evaluacion_1">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 13 de CC2: ficheros de texto, CSV y JSON, colecciones en memoria y programas que guardan y recuperan su estado.">
+  <title>Tema 13: Almacenar y recuperar: ficheros y estructuras de datos</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_13.html" aria-current="page">Tema 13</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_3">3.ª evaluación</a></li><li aria-current="page">Tema 13</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 13 · Bloque D · 3.ª evaluación</p>
+          <h1>Almacenar y recuperar: ficheros y estructuras de datos</h1>
+          <p class="hero_intro">Todo lo que un programa calcula vive en la memoria y desaparece al cerrarlo. Este tema enseña a guardar datos en ficheros y a elegir la estructura adecuada para organizarlos.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>6–7 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>leer y escribir ficheros de texto controlando la codificación y los saltos de línea;</li>
+            <li>guardar y recuperar datos tabulares con CSV y estructuras anidadas con JSON;</li>
+            <li>elegir entre lista, tupla, conjunto y diccionario según lo que necesites hacer;</li>
+            <li>construir un programa que conserva su estado entre una ejecución y la siguiente.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#archivo">1. TEXTO</a></li>
+            <li><a href="#tablas">2. TABLAS</a></li>
+            <li><a href="#formato">3. JSON</a></li>
+            <li><a href="#memoria">4. MEMORIA</a></li>
+            <li><a href="#estado">5. ESTADO</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Cuando cierras un programa, todo lo que había en su memoria desaparece. ¿Dónde guardarías la lista de libros prestados de la biblioteca del aula para recuperarla mañana?
+          </div>
+
+          <section id="archivo">
+            <span class="etiqueta">01 / TEXTO</span>
+            <h2>Ficheros de texto: leer y escribir líneas</h2>
+            <p>Un fichero es memoria de largo plazo: sobrevive a la ejecución. La forma segura de usarlo es <code>with open(...)</code>, que garantiza el cierre aunque ocurra un error. Al abrir indicas un modo: <code>"r"</code> (leer), <code>"w"</code> (crear o vaciar) o <code>"a"</code> (añadir al final), y conviene declarar <code>encoding="utf-8"</code>.</p>
+            <pre><code>with open("bitacora.txt", "a", encoding="utf-8") as f:
+    f.write("2027-05-04: el guardado funciona\n")   # \n separa líneas
+
+with open("bitacora.txt", encoding="utf-8") as f:
+    for linea in f:                  # recorre el fichero línea a línea
+        limpia = linea.rstrip("\n")  # cada línea trae su salto final
+        if limpia.strip():           # descarta las líneas en blanco
+            print(limpia)</code></pre>
+            <p>Recorrer con un <code>for</code> evita cargar el fichero entero en memoria. Si el archivo no existe, Python lanza <code>FileNotFoundError</code>: en la sección 5 verás cómo tratarlo.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>with open() abre y cierra por ti; "w" sobrescribe y "a" añade; y cada línea leída trae su \n, así que límpiala antes de usarla.</aside>
+          </section>
+
+          <section id="tablas">
+            <span class="etiqueta">02 / TABLAS</span>
+            <h2>Datos tabulares: el formato CSV</h2>
+            <p>Cuando la información tiene forma de tabla, el CSV la guarda como texto separado; en España el separador habitual es el <code>;</code>, porque la coma ya se usa en los decimales. El módulo <code>csv</code> se ocupa de los casos molestos: campos con comillas, saltos internos o celdas vacías.</p>
+            <pre><code>import csv
+
+with open("notas.csv", newline="", encoding="utf-8") as f:
+    lector = csv.DictReader(f, delimiter=";")  # la 1.ª fila son las cabeceras
+    for fila in lector:
+        print(fila["nombre"], "->", fila["nota"])</code></pre>
+            <p>Cada <code>fila</code> es un diccionario con las cabeceras como claves; con <code>fila.get("nota", "")</code> obtienes un valor por defecto si la celda falta, pues una columna inexistente lanza <code>KeyError</code>. Un fichero vacío o sin cabecera no produce filas. Para escribir, <code>csv.writer</code> convierte listas en filas.</p>
+          </section>
+
+          <section id="formato">
+            <span class="etiqueta">03 / JSON</span>
+            <h2>Datos estructurados: JSON</h2>
+            <p>CSV aplana los datos en una tabla; JSON guarda estructuras anidadas —listas de diccionarios con listas dentro— y es el formato estándar de intercambio entre programas. Python lo traduce casi directamente: objeto a diccionario, matriz a lista, <code>null</code> a <code>None</code>.</p>
+            <pre><code>import json
+
+datos = {"equipo": "Los Mutables", "puntos": [3, 5, 2], "activo": True}
+
+with open("equipo.json", "w", encoding="utf-8") as f:
+    json.dump(datos, f, ensure_ascii=False, indent=2)   # indent: legible
+
+with open("equipo.json", encoding="utf-8") as f:
+    recuperado = json.load(f)
+
+print(recuperado["puntos"])     # [3, 5, 2]</code></pre>
+            <p><code>ensure_ascii=False</code> conserva ñ y á sin escapes e <code>indent=2</code> deja el archivo legible. Si el contenido no es JSON válido, <code>json.load</code> lanza <code>JSONDecodeError</code>: decide qué hacer con un dato dañado.</p>
+          </section>
+
+          <section id="memoria">
+            <span class="etiqueta">04 / MEMORIA</span>
+            <h2>Colecciones: elegir la estructura adecuada</h2>
+            <p>En memoria tienes cuatro colecciones principales. La <strong>lista</strong> mantiene orden y admite duplicados. La <strong>tupla</strong> es su versión inmutable, ideal para parejas que no cambian. El <strong>conjunto</strong> elimina duplicados y no guarda orden. El <strong>diccionario</strong> asocia claves a valores y busca por clave al instante.</p>
+            <pre><code>nombres = ["ana", "bea", "ana", "car"]   # lista con duplicados
+unicos = set(nombres)                    # conjunto: sin repetidos
+print(len(nombres), len(unicos))         # 4 3
+
+telefonos = {"ana": 600111222, "bea": 600333444}
+print(telefonos.get("car"))              # None: esa clave no existe
+telefonos["car"] = 600555666
+print(sorted(telefonos))                 # ['ana', 'bea', 'car']</code></pre>
+            <p><code>dict.get(clave)</code> devuelve <code>None</code> si la clave no existe, mientras que <code>telefonos["car"]</code> antes de añadirla lanzaría <code>KeyError</code>: elige entre «sin dato» o error.</p>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>Lista si importa el orden, tupla si no debe cambiar, conjunto si sobran duplicados, diccionario si buscas por clave.</aside>
+          </section>
+
+          <section id="estado">
+            <span class="etiqueta">05 / ESTADO</span>
+            <h2>Programas con estado: guardar y recuperar</h2>
+            <p>Un programa «con estado» recuerda entre ejecuciones: contadores, agendas, marcadores. La receta es cargar al empezar, actualizar en memoria y guardar al cambiar. Y cargar debe ser tolerante: el fichero puede no existir la primera vez, estar vacío o contener basura.</p>
+            <pre><code>import json
+
+ARCHIVO = "contador.json"
+
+def cargar():
+    """Contador guardado; 0 si el archivo no existe o no es válido."""
+    try:
+        with open(ARCHIVO, encoding="utf-8") as f:
+            valor = json.load(f)
+        return valor if isinstance(valor, int) else 0
+    except (FileNotFoundError, json.JSONDecodeError):
+        return 0
+
+# Pruebas de cargar(): sin archivo->0 · "7"->7 · vacío->0 · "[1, 2]"->0</code></pre>
+            <p>El fichero se crea en la carpeta de trabajo del programa, no necesariamente junto al script. Este patrón de carga tolerante es el que usarás en el proyecto del tema 16.</p>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">06 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>with open() gestiona apertura y cierre; escribe encoding="utf-8" y recorre líneas con for.</li>
+              <li>"w" sobrescribe y "a" añade; cada línea leída trae su \n: límpiala con rstrip("\n").</li>
+              <li>CSV guarda tablas separadas por ; en España; DictReader usa la primera fila como cabecera.</li>
+              <li>JSON guarda estructuras anidadas (null pasa a None); json.dump guarda y json.load recupera.</li>
+              <li>Elige la colección según el caso y haz que cargar() tolere ficheros inexistentes o dañados.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E3_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E3_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E3_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E3_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E3_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E3_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E3_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E3_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E3_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E3_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E3_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E3_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E3_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E3_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E3_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E3_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E3_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E3_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E3_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E3_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">07 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://docs.python.org/es/3/tutorial/inputoutput.html">Documentación oficial de Python: leer y escribir archivos</a>.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 13 · Almacenar y recuperar: ficheros y estructuras de datos</strong><br><small>Bloque D · 3.ª evaluación</small></p>
+      <p><a href="tema_12.html">← Anterior: tema 12</a> · <a href="tema_14.html">Siguiente: tema 14 →</a><br><small><a href="../../programa.html#evaluacion_3">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 14 de CC2: clases y objetos, atributos, métodos, encapsulación básica, colaboración entre objetos y herencia sencilla.">
+  <title>Tema 14: Clases y objetos: modelar con POO</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_14.html" aria-current="page">Tema 14</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_3">3.ª evaluación</a></li><li aria-current="page">Tema 14</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 14 · Bloque D · 3.ª evaluación</p>
+          <h1>Clases y objetos: modelar con programación orientada a objetos</h1>
+          <p class="hero_intro">Cuando el programa crece, los datos y su comportamiento piden viajar juntos. Las clases permiten modelar las entidades del problema tal como son.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>6–7 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>detectar cuándo conviene agrupar datos sueltos en una clase;</li>
+            <li>definir clases con atributos, métodos y una representación legible;</li>
+            <li>proteger el estado interno del objeto con la encapsulación básica;</li>
+            <li>crear objetos que colaboran y clases que reutilizan código con herencia.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#modelo">1. MODELAR</a></li>
+            <li><a href="#clase">2. CLASES</a></li>
+            <li><a href="#control">3. CONTROL</a></li>
+            <li><a href="#objetos">4. OBJETOS</a></li>
+            <li><a href="#reuso">5. REUSO</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            En el instituto, ¿qué «cosas» tienen datos (nombre, curso, notas) y comportamiento (matricularse, aprobar)? ¿Cómo agruparías cada cosa con lo que puede hacer?
+          </div>
+
+          <section id="modelo">
+            <span class="etiqueta">01 / MODELAR</span>
+            <h2>De las funciones sueltas a las clases</h2>
+            <p>Con funciones y listas, los datos de cada entidad viajan en listas paralelas: la posición 3 de una corresponde a la 3 de la otra. Funciona, pero se rompe al añadir un dato: los datos van separados de lo que se hace con ellos.</p>
+            <pre><code># Varias listas paralelas: frágil al crecer
+titulos = ["Dune", "Neuromante"]
+anios = [1965, 1984]
+
+def info_libro(i):
+    return f"{titulos[i]} ({anios[i]})"
+
+print(info_libro(1))    # Neuromante (1984)</code></pre>
+            <p>La programación orientada a objetos agrupa en una <strong>clase</strong> los datos (atributos) y el comportamiento (métodos) de una entidad del problema: un libro, un préstamo, un pedido. De la clase se crean <strong>objetos</strong>, cada uno con sus valores.</p>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>Si llevas listas paralelas cuyas posiciones deben coincidir siempre, es la señal clásica de que ahí falta una clase.</aside>
+          </section>
+
+          <section id="clase">
+            <span class="etiqueta">02 / CLASES</span>
+            <h2>Tu primera clase: atributos y métodos</h2>
+            <p><code>__init__</code> crea el objeto y guarda los valores iniciales como atributos con <code>self.</code>. Los métodos son funciones que actúan sobre el objeto; <code>__str__</code> decide qué se muestra al imprimirlo.</p>
+            <pre><code>class Rectangulo:
+    """Figura rectangular con ancho y alto en centímetros."""
+
+    def __init__(self, ancho, alto):
+        self.ancho = ancho      # atributos: datos del objeto
+        self.alto = alto
+
+    def area(self):             # métodos: comportamiento
+        return self.ancho * self.alto
+
+    def __str__(self):
+        return f"Rectángulo {self.ancho} x {self.alto} cm"
+
+# Pruebas (ancho 4, alto 3): area()->12 · str()->'Rectángulo 4 x 3 cm'</code></pre>
+            <p><code>self</code> es el propio objeto: permite que cada rectángulo calcule con sus medidas. Dos <code>Rectangulo(4, 3)</code> con los mismos datos no son el mismo objeto: <code>==</code> no los iguala, habría que comparar atributo a atributo.</p>
+          </section>
+
+          <section id="control">
+            <span class="etiqueta">03 / CONTROL</span>
+            <h2>El objeto controla su estado: encapsulación</h2>
+            <p>Un saldo no debería poder volverse negativo por un descuido. La <strong>encapsulación</strong> dice que el objeto es dueño de su estado: los cambios pasan por sus métodos, que aplican las reglas. En Python se marca con un guion bajo: <code>_saldo</code> = «interno». Es una convención, no un candado.</p>
+            <pre><code>class Cuenta:
+    """Cuenta bancaria sencilla; el saldo vive en un atributo interno."""
+
+    def __init__(self, titular, saldo_inicial=0):
+        self.titular = titular
+        self._saldo = saldo_inicial
+
+    def ingresar(self, cantidad):
+        if cantidad &lt;= 0:
+            return False            # solo cantidades positivas
+        self._saldo += cantidad
+        return True
+
+    def retirar(self, cantidad):
+        if cantidad &lt;= 0 or cantidad &gt; self._saldo:
+            return False            # nada de números rojos
+        self._saldo -= cantidad
+        return True
+
+# Pruebas: retirar(150) con saldo 100 -> False · ingresar(-5) -> False</code></pre>
+            <p>El método devuelve <code>False</code> cuando la operación no se puede hacer, en lugar de dejar el objeto en un estado imposible: las reglas viven dentro de la clase.</p>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>El guion bajo avisa de que un atributo es interno; los métodos validan antes de cambiar el estado.</aside>
+          </section>
+
+          <section id="objetos">
+            <span class="etiqueta">04 / OBJETOS</span>
+            <h2>Objetos que colaboran entre sí</h2>
+            <p>Los programas reales crean colecciones de objetos que se llaman entre sí: un objeto puede tener como atributo una lista de objetos, así se modela «una playlist contiene canciones».</p>
+            <pre><code>class Cancion:
+    def __init__(self, titulo, duracion_s):
+        self.titulo = titulo
+        self.duracion_s = duracion_s
+
+class Playlist:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.canciones = []        # un objeto contiene una lista de objetos
+
+    def agregar(self, cancion):
+        self.canciones.append(cancion)
+
+    def duracion_total(self):
+        return sum(c.duracion_s for c in self.canciones)
+
+# Pruebas: dos canciones de 180 y 240 s -> 420 · playlist vacía -> 0</code></pre>
+            <p><code>sum([])</code> devuelve 0, así que la playlist vacía no rompe nada: preguntar siempre «¿qué hace mi objeto con la colección vacía?» separa el diseño sólido del que falla en producción. (Se prueba con el conjunto vacío.)</p>
+          </section>
+
+          <section id="reuso">
+            <span class="etiqueta">05 / REUSO</span>
+            <h2>Clases que heredan de otras</h2>
+            <p>Cuando dos clases comparten comportamiento —un círculo y un rectángulo son figuras, ambas con color y área— la <strong>herencia</strong> evita repetir: la hija recibe lo de la madre y añade o cambia lo suyo. <code>super().__init__(...)</code> llama al constructor de la madre.</p>
+            <pre><code>class Figura:
+    def __init__(self, color):
+        self.color = color
+
+    def area(self):
+        raise NotImplementedError("cada figura implementa su área")
+
+class Circulo(Figura):
+    def __init__(self, color, radio):
+        super().__init__(color)     # reutiliza el constructor de Figura
+        self.radio = radio
+
+    def area(self):
+        return 3.1416 * self.radio ** 2
+
+# Pruebas: Circulo("rojo", 2).area() -> 12.5664 · .color -> 'rojo' (heredado)</code></pre>
+            <p><code>raise NotImplementedError</code> convierte la clase madre en un plano incompleto: «esto lo decide cada figura». Usa la herencia con moderación: para compartir una sola función, mejor ponerla fuera.</p>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">06 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>Si llevas listas paralelas cuyos índices deben coincidir, es hora de agrupar esos datos en una clase.</li>
+              <li>__init__ crea el objeto y guarda atributos con self.; los métodos actúan sobre el objeto.</li>
+              <li>__str__ decide cómo se imprime el objeto; dos objetos con los mismos datos no son el mismo objeto.</li>
+              <li>La encapsulación (atributos con _ y métodos que validan) mantiene el estado siempre coherente.</li>
+              <li>Los objetos se guardan en listas y se llaman entre sí; la herencia reutiliza lo común con super().</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E3_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E3_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E3_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E3_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E3_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E3_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E3_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E3_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E3_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E3_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E3_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E3_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E3_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E3_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E3_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E3_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E3_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E3_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E3_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E3_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">07 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://docs.python.org/es/3/tutorial/classes.html">Documentación oficial de Python: clases</a>.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 14 · Clases y objetos: modelar con POO</strong><br><small>Bloque D · 3.ª evaluación</small></p>
+      <p><a href="tema_13.html">← Anterior: tema 13</a> · <a href="tema_15.html">Siguiente: tema 15 →</a><br><small><a href="../../programa.html#evaluacion_3">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>

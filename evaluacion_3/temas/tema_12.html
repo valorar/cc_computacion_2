@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tema 12 de CC2: repaso activo de Python — tipos, control de flujo, funciones, listas y entornos de desarrollo.">
+  <title>Tema 12: Python para seguir: datos, funciones y entornos</title>
+  <meta name="theme-color" content="#eef2f4">
+  <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/css/estilos.css">
+  <script src="../../assets/js/navegacion.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <div class="barra_progreso" aria-hidden="true"><span data_progreso></span></div>
+
+  <header class="cabecera">
+    <div class="cabecera_interior">
+      <a class="marca" href="../../index.html" aria-label="Inicio de Ciencias de la Computación II">
+        <span class="marca_codigo">CC2</span>
+        <span>Ciencias de la Computación II<small>2.º Bachillerato · 2026–2027</small></span>
+      </a>
+      <button class="boton_menu" type="button" aria-expanded="false" aria-controls="navegacion_principal" data_boton_menu>Menú</button>
+      <nav class="navegacion" id="navegacion_principal" aria-label="Navegación principal" data_navegacion>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="../../programa.html">Programa</a></li>
+          <li><a href="tema_12.html" aria-current="page">Tema 12</a></li>
+          <li><a href="#practicas">Prácticas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <nav class="migas contenedor" aria-label="Migas de pan">
+      <ol><li><a href="../../index.html">Inicio</a></li><li><a href="../../programa.html#evaluacion_3">3.ª evaluación</a></li><li aria-current="page">Tema 12</li></ol>
+    </nav>
+
+    <section class="hero hero_tema">
+      <div class="contenedor hero_rejilla">
+        <div>
+          <p class="etiqueta">Tema 12 · Bloque D · 3.ª evaluación</p>
+          <h1>Python para seguir: datos, funciones y entornos</h1>
+          <p class="hero_intro">No empezamos de cero: recuperamos lo que ya sabes programar y lo convertimos en la base para ficheros, objetos y un proyecto.</p>
+          <ul class="meta_tema" aria-label="Datos del tema">
+            <li>5–6 sesiones</li>
+            <li>Prácticas de la evaluación</li>
+            <li>1 evaluación Moodle</li>
+            <li>Trabajo en el aula</li>
+          </ul>
+        </div>
+        <aside class="hero_lateral" aria-label="Objetivos del tema">
+          <p><strong>Al terminar podrás:</strong></p>
+          <ul>
+            <li>identificar el tipo de cada variable y convertir entre tipos con seguridad;</li>
+            <li>escribir condicionales y bucles que cubren los casos límite, no solo el camino feliz;</li>
+            <li>definir funciones con parámetros y retorno, incluido el caso «sin dato» (None);</li>
+            <li>ejecutar el mismo programa en el intérprete, como archivo .py y en un entorno web.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor rejilla_tema">
+        <nav class="indice_lateral" aria-label="Índice del tema">
+          <strong>En esta página</strong>
+          <ol>
+            <li><a href="#pregunta">Pregunta guía</a></li>
+            <li><a href="#previo">1. REPASO</a></li>
+            <li><a href="#flujo">2. FLUJO</a></li>
+            <li><a href="#piezas">3. PIEZAS</a></li>
+            <li><a href="#listas">4. LISTAS</a></li>
+            <li><a href="#entorno">5. ENTORNO</a></li>
+            <li><a href="#resumen">Resumen</a></li>
+            <li><a href="#practicas">Prácticas</a></li>
+            <li><a href="#evaluacion_moodle">Evaluación Moodle</a></li>
+          </ol>
+        </nav>
+
+        <article class="articulo_tema">
+          <div class="pregunta_guia" id="pregunta">
+            <span class="etiqueta">Pregunta guía</span><br>
+            Si mañana te pidieran programar, de memoria y sin apuntes, un programa que ordena tres números, ¿qué escribirías primero y qué partes se te resistirían?
+          </div>
+
+          <section id="previo">
+            <span class="etiqueta">01 / REPASO</span>
+            <h2>Lo que ya sabes programar</h2>
+            <p>En Ciencias de la Computación I ya escribiste programas con tipos, condicionales, bucles, funciones y listas. Este tema no repite esa teoría: la reactiva con un foco nuevo: que el programa <strong>funcione siempre</strong>, también con entradas vacías o fuera de rango.</p>
+            <p>Cada variable guarda un dato de un tipo —<code>int</code> (2027), <code>float</code> (3.5), <code>str</code> ("cc2"), <code>bool</code> (True/False)— y las operaciones dependen de él. El primer fallo real suele estar en la conversión, porque <code>input()</code> devuelve siempre texto:</p>
+            <pre><code>anio = int(input("¿En qué año naciste? "))   # input da texto: conviértelo
+print(f"En 2027 cumplirás {2027 - anio} años.")
+# int("") -> ValueError   float("7.5") -> 7.5   (decimales con punto)</code></pre>
+            <aside class="idea_clave" aria-label="Idea clave"><strong>Idea clave</strong>input() entrega texto: conviértelo con int() o float() antes de operar.</aside>
+          </section>
+
+          <section id="flujo">
+            <span class="etiqueta">02 / FLUJO</span>
+            <h2>Decidir y repetir con precisión</h2>
+            <p>Python evalúa las ramas de un <code>if</code> en orden: gana la primera condición verdadera. El orden de los <code>elif</code> cambia el resultado, así que prueba siempre los bordes: un 4,9 no es lo mismo que un 5,0.</p>
+            <pre><code>def palabra_para(nota):
+    """Traduce una nota de 0 a 10 a calificación textual."""
+    if nota &lt; 5:
+        return "suspenso"
+    if nota &lt; 7:
+        return "aprobado"
+    if nota &lt; 9:
+        return "notable"
+    return "sobresaliente"
+
+# Pruebas: 4.9->suspenso · 5.0->aprobado · 7.0->notable
+#          9.0->sobresaliente · -1->sobresaliente (¡sin validar!)</code></pre>
+            <p>Para repetir, <code>for</code> recorre una colección y <code>while</code> repite hasta que ocurra algo. El límite de <code>range(a, b)</code> nunca se incluye:</p>
+            <pre><code>total = 0
+for numero in range(1, 101):       # recorre 1..100; el 101 no entra
+    total += numero
+print(total)                       # 5050, la suma de Gauss
+
+for nombre in ["Ada", "Grace", "Alan"]:
+    print(f"Hola, {nombre}")</code></pre>
+            <aside class="idea_clave" aria-label="Idea clave 2"><strong>Idea clave</strong>Un for sobre una colección vacía no ejecuta su cuerpo; un while necesita que algo avance hacia la parada.</aside>
+          </section>
+
+          <section id="piezas">
+            <span class="etiqueta">03 / PIEZAS</span>
+            <h2>Funciones: piezas con nombre que se reutilizan</h2>
+            <p>Una función empaqueta lógica con un nombre y unos parámetros: la pruebas por separado y la reutilizas. Conviene verbalizar una diferencia: <strong>imprimir no es devolver</strong>. Una función sin <code>return</code> devuelve <code>None</code>, el valor que representa «aquí no hay dato».</p>
+            <pre><code>def edad_en_2027(nacimiento):
+    """Años que cumplirá en 2027; None si el dato falta o no es plausible."""
+    if nacimiento is None or nacimiento &lt; 1900:
+        return None
+    return 2027 - nacimiento
+
+# Pruebas: 2010->17 · 2026->1 · None->None · 1500->None</code></pre>
+            <p><code>None</code> se comprueba con <code>is None</code>. Distinguir el cero (dato real) de la ausencia de dato (<code>None</code>) te acompañará todo el curso.</p>
+          </section>
+
+          <section id="listas">
+            <span class="etiqueta">04 / LISTAS</span>
+            <h2>Listas y cadenas: colecciones ordenadas</h2>
+            <p>Cadenas y listas son secuencias: se indexan desde 0, admiten índices negativos y rebanadas. Difieren en algo clave: las <strong>cadenas son inmutables</strong> (todo crea copias: <code>upper()</code>, <code>split()</code>) y las <strong>listas son mutables</strong> (cambias elementos o añades con <code>append()</code>).</p>
+            <pre><code>notas = [7, 8, 5, 9]
+notas.append(6)
+print(len(notas), sum(notas))      # 5 35
+
+def media(numeros):
+    """Media aritmética; None si la lista está vacía."""
+    if not numeros:
+        return None
+    return sum(numeros) / len(numeros)
+
+# Pruebas: [7, 8, 5, 9, 6]->7.0 · [10]->10.0 · []->None
+
+frase = "computación"
+print(frase[:4], frase[-3:], len(frase))   # comp ión 11
+# frase[0] = "C"                           # TypeError: str inmutable</code></pre>
+          </section>
+
+          <section id="entorno">
+            <span class="etiqueta">05 / ENTORNO</span>
+            <h2>Ejecutar programas: del archivo .py a cualquier entorno</h2>
+            <p>Python se usa de dos formas: el <strong>intérprete interactivo</strong> (símbolo <code>&gt;&gt;&gt;</code>), que responde a cada orden y sirve para probar ideas, y el <strong>script</strong>, un archivo de texto con extensión <code>.py</code> que ejecuta todas sus líneas de una vez. En el aula usas IDLE, Thonny o Visual Studio Code; desde el terminal, <code>python3 archivo.py</code>; y entornos web como Replit o Google Colab corren Python en el navegador: mismo lenguaje, distinto lugar.</p>
+            <pre><code># temperaturas.py: convierte grados Celsius a Fahrenheit
+celsius = float(input("Temperatura en °C: "))
+fahrenheit = celsius * 9 / 5 + 32
+print(f"{celsius} °C son {fahrenheit} °F")</code></pre>
+            <p>Si la entrada no es un número, Python detiene el programa y muestra un <em>traceback</em> con archivo, línea y tipo de error (<code>ValueError: could not convert string to float: 'veinticinco'</code>). Aprender a leer ese rastro es la primera habilidad del tema 15.</p>
+          </section>
+
+          <section id="resumen">
+            <span class="etiqueta">06 / SALIDA</span>
+            <h2>Lo esencial</h2>
+            <ol>
+              <li>input() devuelve texto: conviértelo con int() o float() antes de operar.</li>
+              <li>if/elif deciden en orden y range(a, b) excluye el límite superior: prueba los bordes.</li>
+              <li>Las funciones dan nombre y reutilizan lógica; sin return devuelven None, el «sin dato».</li>
+              <li>Listas mutables y cadenas inmutables; ambas se indexan desde 0 y admiten rebanadas.</li>
+              <li>Un script .py se ejecuta con python3 y corre igual en el escritorio que en un entorno web.</li>
+            </ol>
+          </section>
+
+          <section id="practicas">
+            <span class="etiqueta">PRÁCTICA EN EL AULA</span>
+            <h2>Prácticas vinculadas al tema</h2>
+            <p>La teoría y las instrucciones de trabajo se mantienen separadas. Esta evaluación tiene 20 prácticas: 15 autocorregibles en Moodle y 5 corregidas por el profesor con rúbrica (las prácticas 04, 08, 12, 16 y 20). Cada tema enlaza las prácticas donde aplica lo aprendido:</p>
+            <ol class="enlaces_teoria">
+<li><a href="../practicas/practica_01.html"><strong>E3_P01</strong> · Práctica 01 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_02.html"><strong>E3_P02</strong> · Práctica 02 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_03.html"><strong>E3_P03</strong> · Práctica 03 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_04.html"><strong>E3_P04</strong> · Práctica 04 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_05.html"><strong>E3_P05</strong> · Práctica 05 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_06.html"><strong>E3_P06</strong> · Práctica 06 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_07.html"><strong>E3_P07</strong> · Práctica 07 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_08.html"><strong>E3_P08</strong> · Práctica 08 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_09.html"><strong>E3_P09</strong> · Práctica 09 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_10.html"><strong>E3_P10</strong> · Práctica 10 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_11.html"><strong>E3_P11</strong> · Práctica 11 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_12.html"><strong>E3_P12</strong> · Práctica 12 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_13.html"><strong>E3_P13</strong> · Práctica 13 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_14.html"><strong>E3_P14</strong> · Práctica 14 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_15.html"><strong>E3_P15</strong> · Práctica 15 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_16.html"><strong>E3_P16</strong> · Práctica 16 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+<li><a href="../practicas/practica_17.html"><strong>E3_P17</strong> · Práctica 17 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_18.html"><strong>E3_P18</strong> · Práctica 18 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_19.html"><strong>E3_P19</strong> · Práctica 19 de la evaluación</a> <span class="pildora modalidad_auto">Moodle</span></li>
+<li><a href="../practicas/practica_20.html"><strong>E3_P20</strong> · Práctica 20 de la evaluación</a> <span class="pildora modalidad_docente">Rúbrica</span></li>
+            </ol>
+            <p><a class="boton boton_secundario" href="../practicas/index.html">Ver las 20 prácticas de la evaluación</a></p>
+            <p class="nota">Las prácticas autocorregibles registran su nota en Moodle dentro de la categoría Prácticas (70%). Las señaladas como «Rúbrica» son corregidas por el profesor con criterios publicados antes de empezar.</p>
+          </section>
+
+          <section id="evaluacion_moodle">
+            <span class="etiqueta">07 / COMPRENDER</span>
+            <h2>Evaluación Moodle del tema</h2>
+            <p>Al finalizar el tema habrá una prueba autocorregible y calificada en Moodle. Sus preguntas presentarán casos, diagnósticos e interpretaciones relacionados con el contenido del tema.</p>
+            <ul class="lista_comprobacion">
+              <li>Nota registrada en Moodle y vinculada al tema.</li>
+              <li>Sin nota mínima ni condición de aprobado.</li>
+              <li>Forma parte del 30% correspondiente a evaluaciones Moodle.</li>
+              <li>No sustituye las prácticas ni requiere trabajo en casa.</li>
+            </ul>
+            <span class="boton" aria-disabled="true">Disponible próximamente en Moodle</span>
+          </section>
+
+          <section class="fuentes" id="fuentes">
+            <h2>Fuentes y ampliación</h2>
+            <ol>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/05/31/BOCM-20230531-18.PDF">Orden 1736/2023, Anexo IV</a>. Currículo oficial de Ciencias de la Computación en Bachillerato (Comunidad de Madrid).</li>
+              <li><a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2022/07/26/BOCM-20220726-1.PDF">Decreto 64/2022, de 20 de julio</a>. Ordenación del Bachillerato en la Comunidad de Madrid.</li>
+              <li><a href="https://docs.python.org/es/3/tutorial/controlflow.html">Documentación oficial de Python: más herramientas de control de flujo</a>.</li>
+            </ol>
+          </section>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie_interior">
+      <p><strong>Tema 12 · Python para seguir: datos, funciones y entornos</strong><br><small>Bloque D · 3.ª evaluación</small></p>
+      <p><a href="../../evaluacion_2/temas/tema_11.html">← Anterior: tema 11</a> · <a href="tema_13.html">Siguiente: tema 13 →</a><br><small><a href="../../programa.html#evaluacion_3">Volver al programa</a> · <a href="../../index.html">Inicio</a></small></p>
+    </div>
+  </footer>
+</body>
+</html>
