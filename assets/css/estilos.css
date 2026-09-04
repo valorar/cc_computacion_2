@@ -226,7 +226,7 @@ h3 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.
 .nota { padding: 1rem 1.2rem; border: 1px solid var(--linea); background: var(--papel_claro); }
 
 .indice_pagina { padding: 1.2rem 0; border-bottom: 1px solid var(--linea); background: var(--papel_claro); }
-.indice_pagina ul { display: flex; flex-wrap: wrap; gap: 0.45rem 1.2rem; margin: 0; padding: 0; list-style: none; }
+.indice_pagina ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem 1.2rem; width: min(calc(100% - 2rem), 64rem); margin: 0 auto; padding: 0; list-style: none; }
 .indice_pagina a { font-size: 0.88rem; font-weight: 700; }
 
 .evaluacion { margin: 4rem 0 5rem; }
