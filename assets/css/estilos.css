@@ -232,7 +232,7 @@ h3 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.
 
 .evaluacion { margin: 4rem 0 5rem; }
 .evaluacion_cabecera { display: grid; grid-template-columns: minmax(8rem, max-content) minmax(0, 1fr); gap: 7rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--tinta); }
-.evaluacion_numero { font-family: var(--mono); color: var(--verde); font-size: 2.2rem; font-weight: 800; line-height: 1.05; white-space: nowrap; }
+.evaluacion_numero { transform: translateY(0.3rem); font-family: var(--mono); color: var(--verde); font-size: 2.2rem; font-weight: 800; line-height: 1.05; white-space: nowrap; }
 .evaluacion_cabecera p { margin: 0.55rem 0 0; color: var(--tinta_suave); }
 .bloque { display: grid; grid-template-columns: minmax(12rem, 0.38fr) 1fr; gap: 2rem; padding: 2.2rem 0; border-bottom: 1px solid var(--linea); }
 .bloque_nombre { font-family: var(--mono); color: var(--verde); font-size: 0.82rem; font-weight: 750; text-transform: uppercase; }
