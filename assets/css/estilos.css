@@ -224,6 +224,7 @@ h3 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.
 .aviso > strong { font-family: var(--mono); font-size: 0.82rem; text-transform: uppercase; }
 .aviso p:last-child { margin-bottom: 0; }
 .nota { padding: 1rem 1.2rem; border: 1px solid var(--linea); background: var(--papel_claro); }
+.nota_curriculo { color: var(--tinta_suave); font-size: 0.8rem; }
 
 .indice_pagina { padding: 1.2rem 0; border-bottom: 1px solid var(--linea); background: var(--papel_claro); }
 .indice_pagina ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem 2rem; width: min(calc(100% - 2rem), 64rem); margin: 0 auto; padding: 0; list-style: none; }
