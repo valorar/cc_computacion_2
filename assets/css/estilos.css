@@ -366,7 +366,7 @@ details > div { padding: 0 1rem 1rem; }
   .hero { padding-top: 3rem; }
   .hero_lateral { margin-top: 1rem; }
   .lista_datos { grid-template-columns: repeat(2, 1fr); }
-  .lista_datos li:nth-child(3) { padding-left: 0; border-left: 0; }
+  .lista_datos li:nth-child(3) { padding-left: 1.2rem; border-left: 1px solid var(--linea); }
   .tramo { grid-template-columns: 1fr; gap: 0.5rem; }
   .tramo_enlace { justify-self: start; }
   .evaluacion_cabecera { grid-template-columns: 1fr; gap: 0.3rem; }
