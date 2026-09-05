@@ -221,7 +221,7 @@ h3 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.
   background: var(--ambar_claro);
   box-shadow: 6px 6px 0 var(--tinta);
 }
-.aviso strong { font-family: var(--mono); font-size: 0.82rem; text-transform: uppercase; }
+.aviso > strong { font-family: var(--mono); font-size: 0.82rem; text-transform: uppercase; }
 .aviso p:last-child { margin-bottom: 0; }
 .nota { padding: 1rem 1.2rem; border: 1px solid var(--linea); background: var(--papel_claro); }
 
