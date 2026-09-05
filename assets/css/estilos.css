@@ -210,6 +210,7 @@ h3 { margin: 0 0 0.6rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.
 .ruta { display: grid; gap: 0; border-top: 2px solid var(--tinta); }
 .tramo { display: grid; grid-template-columns: 11rem 1fr 12rem; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--linea); align-items: start; }
 .tramo_fecha { font-family: var(--mono); color: var(--tinta_suave); font-size: 0.8rem; }
+.tramo_evaluacion { display: block; margin-bottom: 0.25rem; color: var(--verde); font-family: var(--serif); font-size: 1.25rem; line-height: 1.1; }
 .tramo p { margin: 0.4rem 0 0; color: var(--tinta_suave); }
 .tramo_enlace { justify-self: end; font-weight: 700; }
 
