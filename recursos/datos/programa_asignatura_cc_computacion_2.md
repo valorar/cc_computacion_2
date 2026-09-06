@@ -34,17 +34,17 @@ De septiembre a diciembre, aproximadamente. Seis temas.
 
 #### 1.ª Evaluación · Bloque A — Las redes informáticas
 
-1. **Tema 01 — Conectar ordenadores: la red y sus componentes**  
+1. **Tema 1 — Conectar ordenadores: la red y sus componentes**  
    Hardware y software de red, electrónica de red, tipos de servidores, topologías, redes cableadas e inalámbricas y tipos de red LAN, MAN y WAN.
-2. **Tema 02 — Medios, conectores y señales**  
+2. **Tema 2 — Medios, conectores y señales**  
    Medios de transmisión guiados y no guiados; conectores y puertos; tarjetas y adaptadores de red; espacios físicos de una red local.
-3. **Tema 03 — El modelo OSI y la conversación en capas**  
+3. **Tema 3 — El modelo OSI y la conversación en capas**  
    Por qué las redes se organizan en capas, las siete capas del modelo OSI y el proceso de transmisión de datos.
-4. **Tema 04 — TCP/IP, direcciones y enrutado**  
+4. **Tema 4 — TCP/IP, direcciones y enrutado**  
    El modelo TCP/IP, direccionamiento IPv4 e IPv6, máscaras, puertas de enlace, DNS y estándares IEEE 802.3, 802.11 y 802.15.
-5. **Tema 05 — Configurar una red local**  
+5. **Tema 5 — Configurar una red local**  
    Planificación de una pequeña red, configuración de estaciones y electrónica de red, comprobación de conectividad y resolución de incidencias.
-6. **Tema 06 — Cronología de las redes: de ARPANET al Wi‑Fi**  
+6. **Tema 6 — Cronología de las redes: de ARPANET al Wi‑Fi**  
    De los terminales y la máquina central a ARPANET, TCP/IP, IPv6 y la evolución de la seguridad inalámbrica hasta WPA3.
 
 ### 2.ª Evaluación — Seguridad y creación de contenidos digitales
@@ -53,14 +53,14 @@ De enero a Semana Santa, aproximadamente. Cinco temas.
 
 #### 2.ª Evaluación · Bloque B — Seguridad en sistemas informáticos y redes
 
-7. **Tema 07 — Amenazas: malware y vectores de ataque**  
+7. **Tema 7 — Amenazas: malware y vectores de ataque**  
    Tipos de malware, vulnerabilidades, vectores de ataque, técnicas de prevención y hacking ético.
-8. **Tema 08 — Criptografía y autenticación**  
+8. **Tema 8 — Criptografía y autenticación**  
    Conceptos básicos de criptografía, protocolos seguros, uso de claves, verificación e identificación y protección de documentos.
 
 #### 2.ª Evaluación · Bloque C — Software: herramientas y aplicaciones
 
-9. **Tema 09 — Imagen digital: píxeles, vectores y color**  
+9. **Tema 9 — Imagen digital: píxeles, vectores y color**  
    Imagen rasterizada y vectorial, resolución, profundidad de color, modos de color RGB/HSV/CMYK y formatos gráficos.
 10. **Tema 10 — Edición de imagen: retocar, componer y crear**  
     Modificaciones básicas en imágenes rasterizadas, creación y edición vectorial y exportación adecuada.
