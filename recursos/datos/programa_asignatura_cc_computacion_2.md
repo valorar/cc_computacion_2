@@ -34,17 +34,17 @@ De septiembre a diciembre, aproximadamente. Seis temas.
 
 #### 1.ª Evaluación · Bloque A — Las redes informáticas
 
-1. **01 — Conectar ordenadores: la red y sus componentes**  
+1. **Tema 01 — Conectar ordenadores: la red y sus componentes**  
    Hardware y software de red, electrónica de red, tipos de servidores, topologías, redes cableadas e inalámbricas y tipos de red LAN, MAN y WAN.
-2. **02 — Medios, conectores y señales**  
+2. **Tema 02 — Medios, conectores y señales**  
    Medios de transmisión guiados y no guiados; conectores y puertos; tarjetas y adaptadores de red; espacios físicos de una red local.
-3. **03 — El modelo OSI y la conversación en capas**  
+3. **Tema 03 — El modelo OSI y la conversación en capas**  
    Por qué las redes se organizan en capas, las siete capas del modelo OSI y el proceso de transmisión de datos.
-4. **04 — TCP/IP, direcciones y enrutado**  
+4. **Tema 04 — TCP/IP, direcciones y enrutado**  
    El modelo TCP/IP, direccionamiento IPv4 e IPv6, máscaras, puertas de enlace, DNS y estándares IEEE 802.3, 802.11 y 802.15.
-5. **05 — Configurar una red local**  
+5. **Tema 05 — Configurar una red local**  
    Planificación de una pequeña red, configuración de estaciones y electrónica de red, comprobación de conectividad y resolución de incidencias.
-6. **06 — Cronología de las redes: de ARPANET al Wi‑Fi**  
+6. **Tema 06 — Cronología de las redes: de ARPANET al Wi‑Fi**  
    De los terminales y la máquina central a ARPANET, TCP/IP, IPv6 y la evolución de la seguridad inalámbrica hasta WPA3.
 
 ### 2.ª Evaluación — Seguridad y creación de contenidos digitales
@@ -53,18 +53,18 @@ De enero a Semana Santa, aproximadamente. Cinco temas.
 
 #### 2.ª Evaluación · Bloque B — Seguridad en sistemas informáticos y redes
 
-7. **07 — Amenazas: malware y vectores de ataque**  
+7. **Tema 07 — Amenazas: malware y vectores de ataque**  
    Tipos de malware, vulnerabilidades, vectores de ataque, técnicas de prevención y hacking ético.
-8. **08 — Criptografía y autenticación**  
+8. **Tema 08 — Criptografía y autenticación**  
    Conceptos básicos de criptografía, protocolos seguros, uso de claves, verificación e identificación y protección de documentos.
 
 #### 2.ª Evaluación · Bloque C — Software: herramientas y aplicaciones
 
-9. **09 — Imagen digital: píxeles, vectores y color**  
+9. **Tema 09 — Imagen digital: píxeles, vectores y color**  
    Imagen rasterizada y vectorial, resolución, profundidad de color, modos de color RGB/HSV/CMYK y formatos gráficos.
-10. **10 — Edición de imagen: retocar, componer y crear**  
+10. **Tema 10 — Edición de imagen: retocar, componer y crear**  
     Modificaciones básicas en imágenes rasterizadas, creación y edición vectorial y exportación adecuada.
-11. **11 — Audio y vídeo digital**  
+11. **Tema 11 — Audio y vídeo digital**  
     Digitalización y formatos de audio y vídeo, grabación, edición y mezcla, transiciones, títulos y efectos con lenguaje audiovisual intencionado.
 
 ### 3.ª Evaluación — Programar: de los datos al producto
@@ -73,15 +73,15 @@ De Semana Santa a principios de mayo, aproximadamente. Cinco temas.
 
 #### 3.ª Evaluación · Bloque D — Programación
 
-12. **12 — Python para seguir: datos, funciones y entornos**  
+12. **Tema 12 — Python para seguir: datos, funciones y entornos**  
     Repaso activo de lo aprendido en Ciencias de la Computación I: tipos, estructuras de control, funciones y entornos de programación.
-13. **13 — Almacenar y recuperar: ficheros y estructuras de datos**  
+13. **Tema 13 — Almacenar y recuperar: ficheros y estructuras de datos**  
     Lectura y escritura de datos, formatos de texto y estructurados, y estructuras de almacenamiento en memoria.
-14. **14 — Clases y objetos: modelar con programación orientada a objetos**  
+14. **Tema 14 — Clases y objetos: modelar con programación orientada a objetos**  
     Conceptos de clases y objetos, atributos, métodos, encapsulación básica y modelado de entidades.
-15. **15 — Depurar, probar y mejorar**  
+15. **Tema 15 — Depurar, probar y mejorar**  
     Tipos de errores, trazas y depuradores, casos de prueba, planificación de la secuencia de tareas y fundamentos del software adaptativo.
-16. **16 — Proyecto: una aplicación que resuelve un problema real**  
+16. **Tema 16 — Proyecto: una aplicación que resuelve un problema real**  
     Programación de una aplicación sencilla con planificación, elaboración, depuración, documentación y evidencias.
 
 ## 3. Metodología de trabajo
